@@ -4,7 +4,7 @@ An active-recall study game for **Genki** lessons 19–21 — honorifics, direct
 
 > Quizlet × Mad Libs × flashcards, tuned to the actual exam blueprint.
 
-**▶️ Live:** https://github.com/Abby-Lopez-Roa/Japanese-Grammar-Practice
+**▶️ Live:** https://abby-lopez-roa.github.io/Japanese-Grammar-Practice/
 
 ---
 
