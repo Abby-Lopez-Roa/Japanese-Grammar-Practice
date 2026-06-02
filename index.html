@@ -9,18 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#f6efe2;
-    --paper-2:#efe6d4;
-    --ink:#243043;
-    --ink-soft:#5a6477;
-    --shu:#e0492f;        /* 朱 vermilion */
-    --shu-dark:#bd3a23;
-    --sakura:#f1b7bd;
-    --gold:#e0a93b;
-    --matcha:#3f9d6b;
-    --matcha-dark:#2f7d53;
-    --line:#d9cdb4;
-    --card:#fffdf8;
+    --paper:#f6efe2; --paper-2:#efe6d4; --ink:#243043; --ink-soft:#5a6477;
+    --shu:#e0492f; --shu-dark:#bd3a23; --sakura:#f1b7bd; --gold:#e0a93b;
+    --matcha:#3f9d6b; --matcha-dark:#2f7d53; --line:#d9cdb4; --card:#fffdf8;
     --shadow:rgba(36,48,67,.16);
     --jpfont:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
     --display:"Mochiy Pop One","Zen Kaku Gothic New",sans-serif;
@@ -28,96 +19,89 @@
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;height:100%;}
   body{
-    font-family:var(--jpfont);
-    color:var(--ink);
+    font-family:var(--jpfont);color:var(--ink);
     background:
       radial-gradient(circle at 12% 8%, rgba(241,183,189,.35), transparent 38%),
       radial-gradient(circle at 88% 92%, rgba(224,169,59,.22), transparent 42%),
       var(--paper);
-    background-attachment:fixed;
-    min-height:100%;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+    background-attachment:fixed;min-height:100%;-webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
-  /* faint paper grain */
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;z-index:0;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
-  }
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.5;z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");}
   .wrap{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:18px 16px 48px;}
   ruby rt{font-size:.55em;color:var(--shu-dark);font-weight:500;user-select:none;letter-spacing:0;}
 
-  /* ---------- Header ---------- */
   header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;}
   .brand{display:flex;align-items:center;gap:10px;min-width:0;}
-  .stamp{
-    width:46px;height:46px;flex:none;border-radius:12px;display:grid;place-items:center;
+  .stamp{width:46px;height:46px;flex:none;border-radius:12px;display:grid;place-items:center;
     background:var(--shu);color:#fff;font-family:var(--display);font-size:24px;line-height:1;
-    box-shadow:0 4px 0 var(--shu-dark), 0 8px 16px var(--shadow);transform:rotate(-4deg);
-  }
+    box-shadow:0 4px 0 var(--shu-dark), 0 8px 16px var(--shadow);transform:rotate(-4deg);}
   .brand h1{font-family:var(--display);font-size:19px;margin:0;line-height:1.05;}
   .brand p{margin:2px 0 0;font-size:11.5px;color:var(--ink-soft);font-weight:500;letter-spacing:.3px;}
-  .gear{
-    flex:none;width:44px;height:44px;border:none;border-radius:12px;background:var(--card);
-    box-shadow:0 3px 0 var(--line),0 6px 14px var(--shadow);font-size:20px;cursor:pointer;
-    display:grid;place-items:center;transition:transform .15s;
-  }
+  .gear{flex:none;width:44px;height:44px;border:none;border-radius:12px;background:var(--card);
+    box-shadow:0 3px 0 var(--line),0 6px 14px var(--shadow);font-size:20px;cursor:pointer;display:grid;place-items:center;transition:transform .15s;}
   .gear:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
 
-  /* ---------- Cards / panels ---------- */
-  .panel{
-    background:var(--card);border-radius:20px;padding:20px;
-    box-shadow:0 6px 0 var(--line),0 14px 30px var(--shadow);
-    border:1.5px solid var(--line);
-  }
-  .panel + .panel{margin-top:16px;}
+  .panel{background:var(--card);border-radius:20px;padding:18px;
+    box-shadow:0 6px 0 var(--line),0 14px 30px var(--shadow);border:1.5px solid var(--line);}
+  .panel + .panel{margin-top:14px;}
   .section-label{font-family:var(--display);font-size:13px;color:var(--shu-dark);
-    text-transform:uppercase;letter-spacing:1.5px;margin:0 0 12px;}
+    text-transform:uppercase;letter-spacing:1.5px;margin:0 0 12px;display:flex;align-items:center;justify-content:space-between;}
+  .section-label .meta{font-size:11px;color:var(--ink-soft);letter-spacing:.3px;text-transform:none;font-family:var(--jpfont);font-weight:700;}
 
-  /* ---------- Topic chips ---------- */
-  .topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  @media(max-width:430px){.topic-grid{grid-template-columns:1fr;}}
-  .chip{
-    display:flex;align-items:center;gap:10px;padding:12px 13px;border-radius:14px;cursor:pointer;
-    background:var(--paper);border:2px solid var(--line);transition:all .14s;font-weight:500;font-size:14px;
-  }
-  .chip .em{font-size:20px;flex:none;}
-  .chip .ct{margin-left:auto;font-size:11px;color:var(--ink-soft);background:#fff;border-radius:20px;
-    padding:2px 8px;font-weight:700;border:1px solid var(--line);}
-  .chip.on{background:#fff;border-color:var(--shu);box-shadow:0 3px 0 var(--sakura);}
-  .chip.on .em{filter:none;}
-  .chip:not(.on){opacity:.62;filter:saturate(.5);}
-  .chip:active{transform:scale(.97);}
+  /* ---------- TREE ---------- */
+  .tree{display:flex;flex-direction:column;gap:8px;}
+  .lesson{border:1.5px solid var(--line);border-radius:14px;overflow:hidden;}
+  .lesson-head{display:flex;align-items:center;gap:10px;padding:11px 12px;cursor:pointer;background:#fff;}
+  .lesson-head .em{font-size:19px;flex:none;}
+  .lesson-head .lt{font-family:var(--display);font-size:13.5px;flex:1;line-height:1.2;}
+  .caret{transition:transform .2s;color:var(--ink-soft);font-size:12px;flex:none;}
+  .lesson.collapsed .caret{transform:rotate(-90deg);}
+  .lesson.collapsed .lesson-body{display:none;}
+  .lesson-body{padding:4px 10px 10px;background:var(--paper);}
+  .gp{margin-top:6px;}
+  .gp-head{display:flex;align-items:center;gap:9px;padding:8px 6px;cursor:pointer;border-radius:9px;}
+  .gp-head:active{background:#fff;}
+  .gp-head .gt{font-weight:700;font-size:13.5px;flex:1;line-height:1.25;}
+  .subs{margin:1px 0 4px 30px;display:flex;flex-direction:column;}
+  .sub{display:flex;align-items:center;gap:9px;padding:6px 6px;cursor:pointer;border-radius:8px;font-size:12.5px;color:var(--ink-soft);line-height:1.25;}
+  .sub:active{background:#fff;}
+  .cnt{margin-left:auto;font-size:10px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:1px 7px;font-weight:700;color:var(--ink-soft);flex:none;}
+  .cb{width:21px;height:21px;flex:none;border-radius:6px;border:2px solid var(--line);background:#fff;
+    display:grid;place-items:center;font-size:12px;color:#fff;transition:all .12s;line-height:1;}
+  .cb.on{background:var(--shu);border-color:var(--shu);}
+  .cb.part{background:var(--gold);border-color:var(--gold);}
+  .cb.on::after{content:"✓";}
+  .cb.part::after{content:"–";font-weight:900;}
   .selectall{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;}
   .mini-btn{border:none;background:var(--paper-2);color:var(--ink-soft);font-weight:700;font-size:12px;
     padding:7px 13px;border-radius:20px;cursor:pointer;font-family:var(--jpfont);}
   .mini-btn:active{transform:scale(.95);}
 
-  /* ---------- Mode tiles ---------- */
+  /* ---------- count chips ---------- */
+  .count-row{display:flex;gap:8px;flex-wrap:wrap;}
+  .countchip{border:2px solid var(--line);background:var(--paper);border-radius:12px;padding:11px 18px;
+    font-family:var(--display);font-size:15px;cursor:pointer;transition:all .12s;color:var(--ink);}
+  .countchip.on{background:#fff;border-color:var(--shu);box-shadow:0 3px 0 var(--sakura);color:var(--shu-dark);}
+  .countchip:active{transform:scale(.96);}
+
+  /* ---------- modes ---------- */
   .mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  .mode{
-    text-align:left;border:2px solid var(--line);background:var(--paper);border-radius:14px;
-    padding:13px;cursor:pointer;transition:all .14s;font-family:var(--jpfont);
-  }
-  .mode .mt{font-family:var(--display);font-size:15px;display:flex;align-items:center;gap:7px;}
-  .mode .md{font-size:11.5px;color:var(--ink-soft);margin-top:4px;line-height:1.35;}
+  .mode{text-align:left;border:2px solid var(--line);background:var(--paper);border-radius:14px;
+    padding:12px;cursor:pointer;transition:all .14s;font-family:var(--jpfont);}
+  .mode .mt{font-family:var(--display);font-size:14.5px;display:flex;align-items:center;gap:7px;}
+  .mode .md{font-size:11px;color:var(--ink-soft);margin-top:4px;line-height:1.35;}
   .mode.on{background:#fff;border-color:var(--ink);box-shadow:0 3px 0 var(--gold);}
   .mode:not(.on){opacity:.6;}
   .mode:active{transform:scale(.97);}
 
-  /* ---------- Big buttons ---------- */
-  .go{
-    width:100%;margin-top:16px;border:none;cursor:pointer;font-family:var(--display);
-    font-size:20px;color:#fff;background:var(--shu);padding:17px;border-radius:16px;
-    box-shadow:0 6px 0 var(--shu-dark),0 12px 22px var(--shadow);transition:all .12s;letter-spacing:.5px;
-  }
+  .go{width:100%;margin-top:16px;border:none;cursor:pointer;font-family:var(--display);font-size:20px;color:#fff;
+    background:var(--shu);padding:17px;border-radius:16px;box-shadow:0 6px 0 var(--shu-dark),0 12px 22px var(--shadow);transition:all .12s;letter-spacing:.5px;}
   .go:active{transform:translateY(5px);box-shadow:0 1px 0 var(--shu-dark);}
   .go:disabled{background:#c9beac;box-shadow:0 6px 0 #b3a890;cursor:not-allowed;}
 
-  /* ---------- HUD ---------- */
   .hud{display:flex;gap:8px;margin-bottom:14px;align-items:stretch;flex-wrap:wrap;}
-  .stat{flex:1;min-width:64px;background:var(--card);border:1.5px solid var(--line);border-radius:13px;
-    padding:8px 6px;text-align:center;box-shadow:0 3px 0 var(--line);}
+  .stat{flex:1;min-width:64px;background:var(--card);border:1.5px solid var(--line);border-radius:13px;padding:8px 6px;text-align:center;box-shadow:0 3px 0 var(--line);}
   .stat .v{font-family:var(--display);font-size:20px;line-height:1;}
   .stat .l{font-size:9.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.8px;margin-top:4px;font-weight:700;}
   .stat.streak .v{color:var(--shu);}
@@ -125,25 +109,16 @@
   .progwrap{height:9px;background:var(--paper-2);border-radius:20px;overflow:hidden;margin-bottom:16px;border:1px solid var(--line);}
   .progbar{height:100%;width:0;background:linear-gradient(90deg,var(--shu),var(--gold));border-radius:20px;transition:width .35s cubic-bezier(.4,1.3,.5,1);}
 
-  /* ---------- Question card ---------- */
   .qcard{min-height:120px;}
-  .qtopic{font-size:11px;font-weight:700;color:var(--shu-dark);letter-spacing:.5px;margin-bottom:10px;
+  .qtopic{font-size:11px;font-weight:700;color:var(--shu-dark);letter-spacing:.3px;margin-bottom:10px;
     display:inline-block;background:var(--paper);padding:4px 10px;border-radius:20px;border:1px solid var(--line);}
   .qen{font-size:13.5px;color:var(--ink-soft);font-weight:500;margin-bottom:6px;}
   .qtext{font-size:23px;line-height:1.6;font-weight:500;}
-  .qtext .blank{display:inline-block;min-width:54px;border-bottom:3px dashed var(--shu);
-    text-align:center;color:var(--shu);font-weight:700;padding:0 6px;margin:0 2px;}
-  .qtext .blank.filled{border-bottom-style:solid;}
 
-  /* choices */
   .choices{display:flex;flex-direction:column;gap:10px;margin-top:18px;}
-  .choice{
-    border:2px solid var(--line);background:var(--paper);border-radius:14px;padding:14px 16px;
-    font-size:18px;text-align:left;cursor:pointer;font-family:var(--jpfont);font-weight:500;
-    transition:all .12s;box-shadow:0 3px 0 var(--line);display:flex;align-items:center;gap:12px;color:var(--ink);
-  }
-  .choice .key{font-family:var(--display);font-size:13px;width:24px;height:24px;flex:none;border-radius:7px;
-    background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-soft);}
+  .choice{border:2px solid var(--line);background:var(--paper);border-radius:14px;padding:14px 16px;font-size:18px;text-align:left;cursor:pointer;
+    font-family:var(--jpfont);font-weight:500;transition:all .12s;box-shadow:0 3px 0 var(--line);display:flex;align-items:center;gap:12px;color:var(--ink);}
+  .choice .key{font-family:var(--display);font-size:13px;width:24px;height:24px;flex:none;border-radius:7px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-soft);}
   .choice:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
   .choice.correct{background:#e7f6ee;border-color:var(--matcha);box-shadow:0 3px 0 var(--matcha);}
   .choice.correct .key{background:var(--matcha);color:#fff;border-color:var(--matcha);}
@@ -152,20 +127,10 @@
   .choice.locked{pointer-events:none;}
   .choice.dim{opacity:.45;}
 
-  /* word bank (mad libs) */
-  .bank{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
-  .word{border:2px solid var(--line);background:#fff;border-radius:12px;padding:11px 16px;font-size:18px;
-    cursor:pointer;font-family:var(--jpfont);font-weight:500;box-shadow:0 3px 0 var(--line);transition:all .12s;}
-  .word:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
-  .word.used{opacity:.3;pointer-events:none;}
-
-  /* flashcard */
   .flash{perspective:1200px;margin-top:8px;}
   .flash-inner{position:relative;width:100%;min-height:200px;transition:transform .5s;transform-style:preserve-3d;cursor:pointer;}
   .flash.flipped .flash-inner{transform:rotateY(180deg);}
-  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;display:flex;
-    flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;
-    border:2px solid var(--line);box-shadow:0 4px 0 var(--line);}
+  .face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;border:2px solid var(--line);box-shadow:0 4px 0 var(--line);}
   .face.front{background:var(--paper);}
   .face.back{background:#fff;transform:rotateY(180deg);}
   .face .big{font-size:30px;font-weight:700;line-height:1.4;}
@@ -178,9 +143,7 @@
   .fbtn.got{background:var(--matcha);box-shadow:0 5px 0 var(--matcha-dark);}
   .fbtn:active{transform:translateY(4px);box-shadow:0 1px 0 currentColor;}
 
-  /* feedback / explanation */
-  .feedback{margin-top:16px;border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.5;display:none;
-    border:1.5px solid var(--line);animation:slideup .25s ease both;}
+  .feedback{margin-top:16px;border-radius:14px;padding:14px 16px;font-size:14px;line-height:1.5;display:none;border:1.5px solid var(--line);animation:slideup .25s ease both;}
   .feedback.show{display:block;}
   .feedback.ok{background:#e7f6ee;border-color:var(--matcha);}
   .feedback.no{background:#fbe7e2;border-color:var(--shu);}
@@ -188,8 +151,7 @@
   .feedback.ok .verdict{color:var(--matcha-dark);}
   .feedback.no .verdict{color:var(--shu-dark);}
   .feedback .ans{font-weight:700;}
-  .nextbtn{width:100%;margin-top:14px;border:none;background:var(--ink);color:#fff;font-family:var(--display);
-    font-size:17px;padding:15px;border-radius:14px;cursor:pointer;box-shadow:0 5px 0 #161e2b;transition:all .12s;}
+  .nextbtn{width:100%;margin-top:14px;border:none;background:var(--ink);color:#fff;font-family:var(--display);font-size:17px;padding:15px;border-radius:14px;cursor:pointer;box-shadow:0 5px 0 #161e2b;transition:all .12s;}
   .nextbtn:active{transform:translateY(4px);box-shadow:0 1px 0 #161e2b;}
   @keyframes slideup{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
   @keyframes shake{10%,90%{transform:translateX(-2px);}20%,80%{transform:translateX(4px);}30%,50%,70%{transform:translateX(-7px);}40%,60%{transform:translateX(7px);}}
@@ -197,7 +159,6 @@
   @keyframes pop{0%{transform:scale(1);}50%{transform:scale(1.04);}100%{transform:scale(1);}}
   .pop{animation:pop .3s;}
 
-  /* results */
   .result-hero{text-align:center;padding:8px 0 6px;}
   .result-hero .emoji{font-size:56px;}
   .result-hero h2{font-family:var(--display);font-size:26px;margin:6px 0 2px;}
@@ -210,15 +171,11 @@
   .miss{background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:9px;font-size:14px;}
   .miss .mq{font-weight:500;margin-bottom:4px;}
   .miss .ma{color:var(--matcha-dark);font-weight:700;}
-  .miss .myours{color:var(--shu-dark);font-size:12.5px;margin-top:3px;}
 
-  /* settings modal */
-  .overlay{position:fixed;inset:0;background:rgba(36,48,67,.45);backdrop-filter:blur(3px);z-index:50;
-    display:none;align-items:flex-end;justify-content:center;padding:0;}
+  .overlay{position:fixed;inset:0;background:rgba(36,48,67,.45);backdrop-filter:blur(3px);z-index:50;display:none;align-items:flex-end;justify-content:center;}
   .overlay.show{display:flex;animation:fade .2s;}
   @keyframes fade{from{opacity:0;}to{opacity:1;}}
-  .sheet{background:var(--card);width:100%;max-width:680px;border-radius:22px 22px 0 0;padding:22px 20px 30px;
-    box-shadow:0 -10px 40px rgba(0,0,0,.25);animation:rise .28s cubic-bezier(.3,1.2,.5,1);}
+  .sheet{background:var(--card);width:100%;max-width:680px;border-radius:22px 22px 0 0;padding:22px 20px 30px;box-shadow:0 -10px 40px rgba(0,0,0,.25);animation:rise .28s cubic-bezier(.3,1.2,.5,1);}
   @keyframes rise{from{transform:translateY(100%);}to{transform:none;}}
   .sheet h2{font-family:var(--display);font-size:18px;margin:0 0 4px;}
   .sheet .sub{font-size:12.5px;color:var(--ink-soft);margin:0 0 16px;}
@@ -230,21 +187,35 @@
   .sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 2px 4px rgba(0,0,0,.2);}
   .sw.on{background:var(--matcha);}
   .sw.on::after{transform:translateX(22px);}
-  .close-sheet{width:100%;margin-top:18px;border:none;background:var(--ink);color:#fff;font-family:var(--display);
-    font-size:16px;padding:14px;border-radius:13px;cursor:pointer;}
+  .close-sheet{width:100%;margin-top:18px;border:none;background:var(--ink);color:#fff;font-family:var(--display);font-size:16px;padding:14px;border-radius:13px;cursor:pointer;}
 
   .hidden{display:none!important;}
   .topbar{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-  .backbtn{border:none;background:var(--card);width:42px;height:42px;border-radius:12px;font-size:20px;cursor:pointer;
-    box-shadow:0 3px 0 var(--line);}
+  .backbtn{border:none;background:var(--card);width:42px;height:42px;border-radius:12px;font-size:20px;cursor:pointer;box-shadow:0 3px 0 var(--line);}
   .backbtn:active{transform:translateY(3px);box-shadow:0 0 0 var(--line);}
   .topbar .tt{font-family:var(--display);font-size:16px;}
-
-  /* confetti burst */
   #burst{position:fixed;inset:0;pointer-events:none;z-index:60;overflow:hidden;}
   .conf{position:absolute;font-size:22px;animation:conffall 1.1s ease-out forwards;}
   @keyframes conffall{0%{transform:translateY(0) rotate(0);opacity:1;}100%{transform:translateY(110vh) rotate(540deg);opacity:0;}}
   .footnote{text-align:center;font-size:11px;color:var(--ink-soft);margin-top:22px;line-height:1.5;}
+  /* gloss / sentence x-ray */
+  .gloss{cursor:help;border-bottom:1.5px dotted var(--gold);border-radius:3px;transition:background .1s;}
+  .gloss:hover,.gloss.active{background:rgba(224,169,59,.28);}
+  .gloss.part{border-bottom-color:var(--shu);border-bottom-style:solid;}
+  .gloss.part:hover,.gloss.part.active{background:rgba(224,73,47,.18);}
+  #tip{position:fixed;z-index:80;max-width:min(280px,86vw);background:var(--ink);color:#fff;border-radius:13px;
+    padding:11px 14px;font-size:13px;line-height:1.5;box-shadow:0 10px 28px rgba(0,0,0,.35);display:none;}
+  #tip.show{display:block;animation:fade .12s;}
+  #tip .hw{font-family:var(--display);font-size:16px;margin-bottom:5px;}
+  #tip .hw small{font-weight:400;opacity:.85;font-size:12.5px;margin-left:5px;}
+  #tip .row2{display:block;margin-top:3px;}
+  #tip .tag2{color:var(--gold);font-weight:700;}
+  #tip .pt{color:var(--sakura);font-weight:700;}
+  .readbody{font-size:18px;line-height:2.05;margin-top:4px;}
+  .readbody p{margin:0 0 13px;}
+  .story-focus{font-size:12px;color:var(--shu-dark);margin:4px 0 12px;font-weight:700;}
+  .gloss-hint{font-size:11.5px;color:var(--ink-soft);margin-top:14px;text-align:center;line-height:1.5;}
+  .read-note{font-size:12px;color:var(--ink-soft);background:var(--paper);border:1px dashed var(--line);border-radius:10px;padding:9px 12px;margin-bottom:10px;}
 </style>
 </head>
 <body>
@@ -254,7 +225,7 @@
       <div class="stamp">語</div>
       <div>
         <h1>げんきトレーナー</h1>
-        <p>GENKI L19–21 · keigo · directions · passive · favors</p>
+        <p>GENKI L19–21 · build your own practice set</p>
       </div>
     </div>
     <button class="gear" id="gearBtn" aria-label="Settings">⚙️</button>
@@ -263,12 +234,14 @@
   <!-- ============ HOME ============ -->
   <div id="home">
     <div class="panel">
-      <p class="section-label">① Pick your topics</p>
-      <div class="topic-grid" id="topicGrid"></div>
+      <p class="section-label">① Choose what to practice <span class="meta" id="selMeta"></span></p>
+      <div class="read-note hidden" id="readNote">📖 Reading mode uses its own passages — the topic picks below are ignored.</div>
+      <div class="tree" id="tree"></div>
       <div class="selectall">
         <button class="mini-btn" id="allBtn">Select all</button>
         <button class="mini-btn" id="noneBtn">Clear</button>
-        <button class="mini-btn" id="examBtn">⭐ Exam set (everything)</button>
+        <button class="mini-btn" id="expandBtn">Expand all</button>
+        <button class="mini-btn" id="collapseBtn">Collapse all</button>
       </div>
     </div>
 
@@ -277,16 +250,18 @@
       <div class="mode-grid" id="modeGrid"></div>
     </div>
 
+    <div class="panel">
+      <p class="section-label">③ How many questions? <span class="meta" id="availMeta"></span></p>
+      <div class="count-row" id="countRow"></div>
+    </div>
+
     <button class="go" id="startBtn">はじめる · Start</button>
     <p class="footnote">Tip: turn furigana OFF in ⚙️ to test yourself exam-style. Nothing is saved — close & reopen to reset.</p>
   </div>
 
   <!-- ============ GAME ============ -->
   <div id="game" class="hidden">
-    <div class="topbar">
-      <button class="backbtn" id="quitBtn">←</button>
-      <span class="tt" id="modeTitle"></span>
-    </div>
+    <div class="topbar"><button class="backbtn" id="quitBtn">←</button><span class="tt" id="modeTitle"></span></div>
     <div class="hud" id="hud"></div>
     <div class="progwrap" id="progWrap"><div class="progbar" id="progBar"></div></div>
     <div class="panel qcard" id="qcard"></div>
@@ -313,7 +288,6 @@
   </div>
 </div>
 
-<!-- settings -->
 <div class="overlay" id="overlay">
   <div class="sheet">
     <h2>Settings</h2>
@@ -323,393 +297,642 @@
   </div>
 </div>
 <div id="burst"></div>
+<div id="tip"></div>
 
 <script>
-/* =========================================================================
-   FURIGANA: write kanji like  部長{ぶちょう}  or  召{め}し上{あ}がる
-   Reading attaches only to the kanji run immediately before the braces.
-   ========================================================================= */
-const KANJI = /[\u4e00-\u9faf\u3005\u3006\u30f5\u30f6]+/;
+/* ===== FURIGANA: write kanji as 部長{ぶちょう} or 召{め}し上{あ}がる ===== */
 function jp(text, furi){
   if(text==null) return "";
-  if(furi){
-    return text.replace(/([\u4e00-\u9faf\u3005\u3006\u30f5\u30f6]+)\{([^{}]+)\}/g,
-      '<ruby>$1<rt>$2</rt></ruby>');
-  }
+  if(furi) return text.replace(/([\u4e00-\u9faf\u3005\u3006\u30f5\u30f6]+)\{([^{}]+)\}/g,'<ruby>$1<rt>$2</rt></ruby>');
   return text.replace(/\{[^{}]+\}/g,'');
 }
-// plain reading-stripped string (for comparing/answer display fallback)
-function strip(t){return (t||"").replace(/\{[^{}]+\}/g,'');}
+const strip=t=>(t||"").replace(/\{[^{}]+\}/g,'');
 
 /* =========================================================================
-   CONTENT BANK  (L19–21, aligned to the Assessment-3 review sheet)
+   TAXONOMY  →  Lesson  ▸  grammar point  ▸  sub-point (leaf = practice tag)
    ========================================================================= */
-
-// TOPIC metadata
-const TOPICS = [
-  {key:"keigo_son",  em:"🙇", label:"Honorifics 尊敬語"},
-  {key:"keigo_hum",  em:"🤲", label:"Humble 謙譲語"},
-  {key:"dir",        em:"🗺️", label:"Directions 道案内"},
-  {key:"passive",    em:"😵", label:"Passive 受身"},
-  {key:"favors",     em:"🎁", label:"Favors あげる/くれる"},
-  {key:"aida",       em:"⏳", label:"間に vs 間"},
-  {key:"change",     em:"🔧", label:"くする / にする"},
-  {key:"desire",     em:"💭", label:"Desire ほしい/たい"},
-  {key:"vocab",      em:"📚", label:"Vocabulary L19–21"},
-  {key:"particle",   em:"🧩", label:"Particles 助詞"},
-  {key:"conj",       em:"🔁", label:"Conjugation 活用"},
+const TAXONOMY = [
+  {id:"L19", em:"🙇", label:"Lesson 19 — Honorifics 尊敬語", groups:[
+    {id:"g_son",  label:"Honorific verbs (尊敬語)", subs:[
+      {id:"son.verbs",  label:"Special honorific verbs (いらっしゃる・召し上がる…)"},
+      {id:"son.pattern",label:"お〜になる / respectful お〜ください"},
+    ]},
+    {id:"g_v19", label:"Vocabulary", subs:[{id:"vocab.l19", label:"L19 words"}]},
+  ]},
+  {id:"L20", em:"🤲", label:"Lesson 20 — Humble speech & Directions", groups:[
+    {id:"g_hum", label:"Humble speech (謙譲語)", subs:[
+      {id:"hum.verbs",label:"Humble verbs (申す・いただく・さしあげる)"},
+      {id:"hum.osuru",label:"Humble お〜する"},
+    ]},
+    {id:"g_dir", label:"Giving directions", subs:[
+      {id:"dir.verbs",    label:"まっすぐ・曲がる・通る・渡る"},
+      {id:"dir.particles",label:"Direction particles & 〜なら"},
+    ]},
+    {id:"g_v20", label:"Vocabulary", subs:[{id:"vocab.l20", label:"L20 words"}]},
+  ]},
+  {id:"L21", em:"😵", label:"Lesson 21 — Passive & 間に", groups:[
+    {id:"g_pass", label:"Passive (受身)", subs:[
+      {id:"pass.conj",label:"Passive conjugation"},
+      {id:"pass.sent",label:"Passive sentences (villain に)"},
+    ]},
+    {id:"g_aida", label:"時間 expressions", subs:[{id:"aida", label:"間に vs 間"}]},
+    {id:"g_v21",  label:"Vocabulary", subs:[{id:"vocab.l21", label:"L21 words"}]},
+  ]},
+  {id:"REV", em:"⭐", label:"Assessment 3 Review (cross-lesson)", groups:[
+    {id:"g_change", label:"くする / にする", subs:[{id:"change", label:"Making intentional changes"}]},
+    {id:"g_desire", label:"Desire", subs:[{id:"desire", label:"ほしい・たい・てほしい・ないでほしい"}]},
+    {id:"g_favors", label:"Giving & receiving favors", subs:[{id:"favors", label:"てあげる/くれる/もらう/さしあげる/くださる/いただく"}]},
+    {id:"g_part",   label:"Particles", subs:[{id:"particle", label:"Particle drills"}]},
+    {id:"g_conj",   label:"Mixed conjugation", subs:[{id:"conj", label:"Conjugation review"}]},
+  ]},
 ];
+// flatten
+const LEAVES=[]; const LEAFINFO={};
+TAXONOMY.forEach(L=>L.groups.forEach(g=>g.subs.forEach(s=>{
+  const leaf={id:s.id,label:s.label,gp:g.id,gpLabel:g.label,lesson:L.id,lessonLabel:L.label,em:L.em};
+  LEAVES.push(leaf);LEAFINFO[s.id]=leaf;
+})));
 
-/* ---- TRANSFORMATION PAIRS (used as flashcards + auto multiple-choice) ---- */
-// front = the prompt (plain form / English), back = the form to produce
+/* =========================================================================
+   CONTENT  (each item tagged with its leaf id)
+   ========================================================================= */
 const PAIRS = [
-  // 尊敬語 honorific
-  {topic:"keigo_son", front:"いる / 行く / 来る", back:"いらっしゃる", note:"One honorific verb covers いる, 行く, and 来る. Long form: いらっしゃいます."},
-  {topic:"keigo_son", front:"食{た}べる / 飲{の}む", back:"召{め}し上{あ}がる", note:"召し上がる = honorific 'to eat/drink'. Don't confuse with いただく (humble)."},
-  {topic:"keigo_son", front:"見{み}る", back:"ご覧{らん}になる", note:"ご覧になる = honorific 'to see/look at'."},
-  {topic:"keigo_son", front:"する", back:"なさる", note:"なさる = honorific 'to do'. Long: なさいます."},
-  {topic:"keigo_son", front:"言{い}う", back:"おっしゃる", note:"おっしゃる = honorific 'to say'. Long: おっしゃいます."},
-  {topic:"keigo_son", front:"くれる", back:"くださる", note:"くださる = honorific 'to give (to me)'. Long: くださいます."},
-  {topic:"keigo_son", front:"寝{ね}る", back:"お休{やす}みになる", note:"お休みになる = honorific 'to sleep'."},
-  {topic:"keigo_son", front:"書{か}く (お〜になる pattern)", back:"お書{か}きになる", note:"Regular honorific: お + verb-stem + になる."},
-  {topic:"keigo_son", front:"帰{かえ}る (お〜になる pattern)", back:"お帰{かえ}りになる", note:"お + stem + になる. 帰り is the stem of 帰る."},
-  // 謙譲語 humble
-  {topic:"keigo_hum", front:"言{い}う (extra-modest)", back:"申{もう}す", note:"申す / 〜と申します = extra-modest 'to say / my name is…'."},
-  {topic:"keigo_hum", front:"もらう", back:"いただく", note:"いただく = humble 'to receive'."},
-  {topic:"keigo_hum", front:"あげる", back:"さしあげる", note:"さしあげる = humble 'to give (to a superior)'."},
-  {topic:"keigo_hum", front:"持{も}つ (お〜する pattern)", back:"お持{も}ちする", note:"Humble: お + stem + する, often to offer help. お持ちします = 'I'll carry it.'"},
-  {topic:"keigo_hum", front:"送{おく}る (お〜する pattern)", back:"お送{おく}りする", note:"お送りします = 'I'll see you off / walk you (humbly).'"},
-  {topic:"keigo_hum", front:"会{あ}う (お〜する pattern)", back:"お会{あ}いする", note:"お会いしました = 'I met (someone of higher status).'"},
-  // passive (plain dictionary -> passive plain)
-  {topic:"passive", front:"食{た}べる → passive", back:"食{た}べられる", note:"る-verb: drop る, add られる."},
-  {topic:"passive", front:"見{み}る → passive", back:"見{み}られる", note:"る-verb: drop る, add られる."},
-  {topic:"passive", front:"いじめる → passive", back:"いじめられる", note:"る-verb: drop る, add られる."},
-  {topic:"passive", front:"読{よ}む → passive", back:"読{よ}まれる", note:"う-verb: final -u → -a + れる. む→ま+れる."},
-  {topic:"passive", front:"怒{おこ}る → passive", back:"怒{おこ}られる", note:"う-verb: る→ら+れる. 'to be scolded'."},
-  {topic:"passive", front:"笑{わら}う → passive", back:"笑{わら}われる", note:"う-verb: う→わ+れる (not あ!). 'to be laughed at'."},
-  {topic:"passive", front:"盗{ぬす}む → passive", back:"盗{ぬす}まれる", note:"う-verb: む→ま+れる. 'to have (sth) stolen'."},
-  {topic:"passive", front:"壊{こわ}す → passive", back:"壊{こわ}される", note:"う-verb: す→さ+れる. 'to have (sth) broken'."},
-  {topic:"passive", front:"入{はい}る → passive", back:"入{はい}られる", note:"入る is an う-verb (irregular ru-ending). る→ら+れる."},
-  {topic:"passive", front:"ふる → passive", back:"ふられる", note:"う-verb. 'to be dumped/rejected'."},
+  {tag:"son.verbs", front:"いる / 行く / 来る", back:"いらっしゃる", note:"One honorific verb covers いる, 行く, and 来る. Long form: いらっしゃいます."},
+  {tag:"son.verbs", front:"食{た}べる / 飲{の}む", back:"召{め}し上{あ}がる", note:"召し上がる = honorific 'to eat/drink'. Don't confuse with いただく (humble)."},
+  {tag:"son.verbs", front:"見{み}る", back:"ご覧{らん}になる", note:"ご覧になる = honorific 'to see/look at'."},
+  {tag:"son.verbs", front:"する", back:"なさる", note:"なさる = honorific 'to do'. Long: なさいます."},
+  {tag:"son.verbs", front:"言{い}う", back:"おっしゃる", note:"おっしゃる = honorific 'to say'. Long: おっしゃいます."},
+  {tag:"son.verbs", front:"くれる", back:"くださる", note:"くださる = honorific 'to give (to me)'. Long: くださいます."},
+  {tag:"son.verbs", front:"寝{ね}る", back:"お休{やす}みになる", note:"お休みになる = honorific 'to sleep'."},
+  {tag:"son.pattern", front:"書{か}く (お〜になる pattern)", back:"お書{か}きになる", note:"Regular honorific: お + verb-stem + になる."},
+  {tag:"son.pattern", front:"帰{かえ}る (お〜になる pattern)", back:"お帰{かえ}りになる", note:"お + stem + になる. 帰り is the stem of 帰る."},
+  {tag:"hum.verbs", front:"言{い}う (extra-modest)", back:"申{もう}す", note:"申す / 〜と申します = extra-modest 'to say / my name is…'."},
+  {tag:"hum.verbs", front:"もらう", back:"いただく", note:"いただく = humble 'to receive'."},
+  {tag:"hum.verbs", front:"あげる", back:"さしあげる", note:"さしあげる = humble 'to give (to a superior)'."},
+  {tag:"hum.osuru", front:"持{も}つ (お〜する pattern)", back:"お持{も}ちする", note:"Humble: お + stem + する, often to offer help. お持ちします = 'I'll carry it.'"},
+  {tag:"hum.osuru", front:"送{おく}る (お〜する pattern)", back:"お送{おく}りする", note:"お送りします = 'I'll see you off / walk you (humbly).'"},
+  {tag:"hum.osuru", front:"会{あ}う (お〜する pattern)", back:"お会{あ}いする", note:"お会いしました = 'I met (someone of higher status).'"},
+  {tag:"pass.conj", front:"食{た}べる → passive", back:"食{た}べられる", note:"る-verb: drop る, add られる."},
+  {tag:"pass.conj", front:"見{み}る → passive", back:"見{み}られる", note:"る-verb: drop る, add られる."},
+  {tag:"pass.conj", front:"いじめる → passive", back:"いじめられる", note:"る-verb: drop る, add られる."},
+  {tag:"pass.conj", front:"読{よ}む → passive", back:"読{よ}まれる", note:"う-verb: final -u → -a + れる. む→ま+れる."},
+  {tag:"pass.conj", front:"怒{おこ}る → passive", back:"怒{おこ}られる", note:"う-verb: る→ら+れる. 'to be scolded'."},
+  {tag:"pass.conj", front:"笑{わら}う → passive", back:"笑{わら}われる", note:"う-verb: う→わ+れる (not あ!). 'to be laughed at'."},
+  {tag:"pass.conj", front:"盗{ぬす}む → passive", back:"盗{ぬす}まれる", note:"う-verb: む→ま+れる. 'to have (sth) stolen'."},
+  {tag:"pass.conj", front:"壊{こわ}す → passive", back:"壊{こわ}される", note:"う-verb: す→さ+れる. 'to have (sth) broken'."},
+  {tag:"pass.conj", front:"入{はい}る → passive", back:"入{はい}られる", note:"入る is an う-verb (irregular ru-ending). る→ら+れる."},
+  {tag:"pass.conj", front:"ふる → passive", back:"ふられる", note:"う-verb. 'to be dumped/rejected'."},
 ];
 
-/* ---- VOCABULARY (flashcards + auto multiple-choice both directions) ---- */
 const VOCAB = [
   // L19
-  {t:"vocab", jp:"部長{ぶちょう}", en:"department manager"},
-  {t:"vocab", jp:"出張{しゅっちょう}", en:"business trip"},
-  {t:"vocab", jp:"ごちそうする", en:"to treat someone to a meal"},
-  {t:"vocab", jp:"えんりょする", en:"to hold back / refrain"},
-  {t:"vocab", jp:"しょうたいする", en:"to invite"},
-  {t:"vocab", jp:"お礼{れい}", en:"expression of gratitude"},
-  {t:"vocab", jp:"決{き}まる", en:"to be decided"},
-  {t:"vocab", jp:"知{し}り合{あ}う", en:"to get acquainted"},
-  {t:"vocab", jp:"まじめ", en:"serious / diligent"},
-  {t:"vocab", jp:"せいかく", en:"personality"},
-  {t:"vocab", jp:"もてる", en:"to be popular (romantically)"},
-  {t:"vocab", jp:"ひっこす", en:"to move (houses)"},
-  {t:"vocab", jp:"晴{は}れる", en:"to become sunny"},
-  {t:"vocab", jp:"なまけ者{もの}", en:"lazy person"},
-  {t:"vocab", jp:"はずかしがりや", en:"shy person"},
-  {t:"vocab", jp:"おくれる", en:"to be late"},
-  {t:"vocab", jp:"おこる", en:"to get angry"},
-  {t:"vocab", jp:"ようこそ", en:"welcome"},
-  {t:"vocab", jp:"少々{しょうしょう}", en:"a little / a moment (polite)"},
+  {tag:"vocab.l19", jp:"部長{ぶちょう}", en:"department manager"},
+  {tag:"vocab.l19", jp:"出張{しゅっちょう}", en:"business trip"},
+  {tag:"vocab.l19", jp:"ごちそうする", en:"to treat someone to a meal"},
+  {tag:"vocab.l19", jp:"えんりょする", en:"to hold back / refrain"},
+  {tag:"vocab.l19", jp:"しょうたいする", en:"to invite"},
+  {tag:"vocab.l19", jp:"お礼{れい}", en:"expression of gratitude"},
+  {tag:"vocab.l19", jp:"決{き}まる", en:"to be decided"},
+  {tag:"vocab.l19", jp:"知{し}り合{あ}う", en:"to get acquainted"},
+  {tag:"vocab.l19", jp:"まじめ", en:"serious / diligent"},
+  {tag:"vocab.l19", jp:"せいかく", en:"personality"},
+  {tag:"vocab.l19", jp:"もてる", en:"to be popular (romantically)"},
+  {tag:"vocab.l19", jp:"ひっこす", en:"to move (houses)"},
+  {tag:"vocab.l19", jp:"晴{は}れる", en:"to become sunny"},
+  {tag:"vocab.l19", jp:"なまけ者{もの}", en:"lazy person"},
+  {tag:"vocab.l19", jp:"はずかしがりや", en:"shy person"},
+  {tag:"vocab.l19", jp:"おくれる", en:"to be late"},
+  {tag:"vocab.l19", jp:"おこる", en:"to get angry"},
+  {tag:"vocab.l19", jp:"ようこそ", en:"welcome"},
+  {tag:"vocab.l19", jp:"少々{しょうしょう}", en:"a little / a moment (polite)"},
   // L20
-  {t:"vocab", jp:"趣味{しゅみ}", en:"hobby"},
-  {t:"vocab", jp:"スニーカー", en:"sneakers"},
-  {t:"vocab", jp:"信号{しんごう}", en:"traffic light"},
-  {t:"vocab", jp:"角{かど}", en:"corner"},
-  {t:"vocab", jp:"音{おと}", en:"sound"},
-  {t:"vocab", jp:"字{じ}", en:"letter / character"},
-  {t:"vocab", jp:"お宅{たく}", en:"(someone's) home"},
-  {t:"vocab", jp:"重{おも}い", en:"heavy"},
-  {t:"vocab", jp:"軽{かる}い", en:"light (weight)"},
-  {t:"vocab", jp:"戻{もど}る", en:"to return / come back"},
-  {t:"vocab", jp:"聞{き}こえる", en:"to be audible"},
-  {t:"vocab", jp:"伝{つた}える", en:"to convey (a message)"},
-  {t:"vocab", jp:"続{つづ}ける", en:"to continue"},
-  {t:"vocab", jp:"〜階{かい}", en:"…th floor"},
-  {t:"vocab", jp:"もうしわけありません", en:"I'm very sorry (polite)"},
+  {tag:"vocab.l20", jp:"趣味{しゅみ}", en:"hobby"},
+  {tag:"vocab.l20", jp:"スニーカー", en:"sneakers"},
+  {tag:"vocab.l20", jp:"信号{しんごう}", en:"traffic light"},
+  {tag:"vocab.l20", jp:"角{かど}", en:"corner"},
+  {tag:"vocab.l20", jp:"音{おと}", en:"sound"},
+  {tag:"vocab.l20", jp:"字{じ}", en:"letter / character"},
+  {tag:"vocab.l20", jp:"お宅{たく}", en:"(someone's) home"},
+  {tag:"vocab.l20", jp:"重{おも}い", en:"heavy"},
+  {tag:"vocab.l20", jp:"軽{かる}い", en:"light (weight)"},
+  {tag:"vocab.l20", jp:"戻{もど}る", en:"to return / come back"},
+  {tag:"vocab.l20", jp:"聞{き}こえる", en:"to be audible"},
+  {tag:"vocab.l20", jp:"伝{つた}える", en:"to convey (a message)"},
+  {tag:"vocab.l20", jp:"続{つづ}ける", en:"to continue"},
+  {tag:"vocab.l20", jp:"〜階{かい}", en:"…th floor"},
+  {tag:"vocab.l20", jp:"もうしわけありません", en:"I'm very sorry (polite)"},
   // L21
-  {t:"vocab", jp:"泥棒{どろぼう}", en:"thief / burglar"},
-  {t:"vocab", jp:"犯人{はんにん}", en:"criminal"},
-  {t:"vocab", jp:"留守{るす}", en:"absence / not at home"},
-  {t:"vocab", jp:"警察{けいさつ}", en:"police"},
-  {t:"vocab", jp:"昔{むかし}", en:"old days / the past"},
-  {t:"vocab", jp:"授業料{じゅぎょうりょう}", en:"tuition"},
-  {t:"vocab", jp:"遠{とお}い", en:"far away"},
-  {t:"vocab", jp:"ひどい", en:"awful"},
-  {t:"vocab", jp:"安全{あんぜん}な", en:"safe"},
-  {t:"vocab", jp:"めちゃくちゃな", en:"messy / disorganized"},
-  {t:"vocab", jp:"変{へん}な", en:"strange"},
-  {t:"vocab", jp:"置{お}く", en:"to put / place"},
-  {t:"vocab", jp:"殴{なぐ}る", en:"to hit / punch"},
-  {t:"vocab", jp:"踏{ふ}む", en:"to step on"},
-  {t:"vocab", jp:"盗{ぬす}む", en:"to steal"},
-  {t:"vocab", jp:"捕{つか}まる", en:"to be caught / arrested"},
-  {t:"vocab", jp:"気{き}が付{つ}く", en:"to notice"},
-  {t:"vocab", jp:"ふる", en:"to reject / jilt someone"},
-  {t:"vocab", jp:"文句{もんく}を言{い}う", en:"to complain"},
-  {t:"vocab", jp:"ほめる", en:"to praise"},
-  {t:"vocab", jp:"ためる", en:"to save (money)"},
-  {t:"vocab", jp:"間違{まちが}える", en:"to make a mistake"},
-  {t:"vocab", jp:"見{み}つける", en:"to find"},
-  {t:"vocab", jp:"びっくりする", en:"to be surprised"},
-  {t:"vocab", jp:"昼寝{ひるね}をする", en:"to take a nap"},
-  {t:"vocab", jp:"連絡{れんらく}する", en:"to contact"},
-  {t:"vocab", jp:"午前中{ごぜんちゅう}", en:"in the morning"},
+  {tag:"vocab.l21", jp:"泥棒{どろぼう}", en:"thief / burglar"},
+  {tag:"vocab.l21", jp:"犯人{はんにん}", en:"criminal"},
+  {tag:"vocab.l21", jp:"留守{るす}", en:"absence / not at home"},
+  {tag:"vocab.l21", jp:"警察{けいさつ}", en:"police"},
+  {tag:"vocab.l21", jp:"昔{むかし}", en:"old days / the past"},
+  {tag:"vocab.l21", jp:"授業料{じゅぎょうりょう}", en:"tuition"},
+  {tag:"vocab.l21", jp:"遠{とお}い", en:"far away"},
+  {tag:"vocab.l21", jp:"ひどい", en:"awful"},
+  {tag:"vocab.l21", jp:"安全{あんぜん}な", en:"safe"},
+  {tag:"vocab.l21", jp:"めちゃくちゃな", en:"messy / disorganized"},
+  {tag:"vocab.l21", jp:"変{へん}な", en:"strange"},
+  {tag:"vocab.l21", jp:"置{お}く", en:"to put / place"},
+  {tag:"vocab.l21", jp:"殴{なぐ}る", en:"to hit / punch"},
+  {tag:"vocab.l21", jp:"踏{ふ}む", en:"to step on"},
+  {tag:"vocab.l21", jp:"盗{ぬす}む", en:"to steal"},
+  {tag:"vocab.l21", jp:"捕{つか}まる", en:"to be caught / arrested"},
+  {tag:"vocab.l21", jp:"気{き}が付{つ}く", en:"to notice"},
+  {tag:"vocab.l21", jp:"ふる", en:"to reject / jilt someone"},
+  {tag:"vocab.l21", jp:"文句{もんく}を言{い}う", en:"to complain"},
+  {tag:"vocab.l21", jp:"ほめる", en:"to praise"},
+  {tag:"vocab.l21", jp:"ためる", en:"to save (money)"},
+  {tag:"vocab.l21", jp:"間違{まちが}える", en:"to make a mistake"},
+  {tag:"vocab.l21", jp:"見{み}つける", en:"to find"},
+  {tag:"vocab.l21", jp:"びっくりする", en:"to be surprised"},
+  {tag:"vocab.l21", jp:"昼寝{ひるね}をする", en:"to take a nap"},
+  {tag:"vocab.l21", jp:"連絡{れんらく}する", en:"to contact"},
+  {tag:"vocab.l21", jp:"午前中{ごぜんちゅう}", en:"in the morning"},
 ];
 
-/* ---- GRAMMAR ITEMS (explicit multiple-choice + fill-in) ----
-   type "mc"  : choices given; pick one
-   type "fill": sentence with ___ ; choose from a word bank (bank=choices)
-   q   : sentence/prompt (furigana markup allowed). Use ___ for the blank.
-   a   : correct answer (must appear in choices)
-   choices: array of options (furigana markup allowed)
-   en  : English gloss / hint
-   note: explanation shown after answering
-*/
 const GRAMMAR = [
-  /* ---------------- 尊敬語 honorifics ---------------- */
-  {topic:"keigo_son", type:"fill", en:"Teacher, I hear you're in America — where(abouts) are you?",
+  /* 尊敬語 */
+  {tag:"son.verbs", type:"fill", en:"Teacher, I hear you're in America — where(abouts) are you?",
    q:"先生{せんせい}は今{いま}アメリカに___そうですね。", a:"いらっしゃる",
    choices:["いらっしゃる","まいる","おる","いたす"],
    note:"いらっしゃる = honorific for 行く/来る/いる. まいる・おる・いたす are HUMBLE forms."},
-  {topic:"keigo_son", type:"fill", en:"The manager said he plays golf with his wife.",
+  {tag:"son.verbs", type:"fill", en:"The manager said he plays golf with his wife.",
    q:"部長{ぶちょう}は奥{おく}さまとゴルフを___とおっしゃっていた。", a:"なさる",
    choices:["なさる","いたす","される","やる"],
    note:"なさる = honorific 'to do'. いたす is the humble version."},
-  {topic:"keigo_son", type:"fill", en:"The manager's child watches anime (honorific 'watch').",
+  {tag:"son.verbs", type:"fill", en:"The manager's child watches anime (honorific 'watch').",
    q:"部長{ぶちょう}のお子{こ}さんはアニメを___そうだ。", a:"ご覧{らん}になる",
    choices:["ご覧{らん}になる","はいけんする","お見{み}になる","ご覧{らん}する"],
    note:"見る → ご覧になる (honorific). はいけんする would be humble; ご覧する is not correct."},
-  {topic:"keigo_son", type:"fill", en:"Prof. Yamashita will talk about the book he wrote (honorific 'wrote').",
+  {tag:"son.pattern", type:"fill", en:"Prof. Yamashita will talk about the book he wrote (honorific 'wrote').",
    q:"山下先生{やましたせんせい}が___本{ほん}について話{はな}してくださる。", a:"お書{か}きになった",
    choices:["お書{か}きになった","お書{か}きした","書{か}いてさしあげた","お書{か}られた"],
    note:"Regular honorific = お + stem + になる. お書きした would be humble."},
-  {topic:"keigo_son", type:"mc", en:"Which is the honorific (尊敬語) form of くれる?",
+  {tag:"son.verbs", type:"mc", en:"Which is the honorific (尊敬語) form of くれる?",
    q:"くれる の尊敬語{そんけいご}は？", a:"くださる",
    choices:["くださる","いただく","さしあげる","もらう"],
    note:"くれる → くださる (honorific). いただく is humble for もらう."},
-  {topic:"keigo_son", type:"fill", en:"Please give my regards to Prof. Yamashita (honorific request).",
+  {tag:"son.pattern", type:"fill", en:"Please give my regards to Prof. Yamashita (honorific request).",
    q:"山下先生{やましたせんせい}によろしくお___ください。", a:"伝{つた}え",
    choices:["伝{つた}え","伝{つた}わり","伝{つた}えて","お伝{つた}え"],
    note:"お + verb-stem + ください is the honorific request. Stem of 伝える is 伝え."},
 
-  /* ---------------- 謙譲語 humble ---------------- */
-  {topic:"keigo_hum", type:"fill", en:"My name is John Wang (extra-modest 'I say/am called').",
+  /* 謙譲語 */
+  {tag:"hum.verbs", type:"fill", en:"My name is John Wang (extra-modest 'I say/am called').",
    q:"ジョン・ワンと___。", a:"申{もう}します",
    choices:["申{もう}します","おっしゃいます","言{い}われます","申{もう}し上{あ}げられます"],
    note:"〜と申します = extra-modest 'My name is…'. おっしゃる is the HONORIFIC of 言う."},
-  {topic:"keigo_hum", type:"mc", en:"Which is the humble (謙譲語) form of もらう?",
+  {tag:"hum.verbs", type:"mc", en:"Which is the humble (謙譲語) form of もらう?",
    q:"もらう の謙譲語{けんじょうご}は？", a:"いただく",
    choices:["いただく","くださる","さしあげる","めしあがる"],
    note:"もらう → いただく (humble). くださる is honorific for くれる."},
-  {topic:"keigo_hum", type:"fill", en:"I'll carry the teacher's bag (humbly offering help).",
+  {tag:"hum.osuru", type:"fill", en:"I'll carry the teacher's bag (humbly offering help).",
    q:"先生{せんせい}のかばんを___。", a:"お持{も}ちします",
    choices:["お持{も}ちします","お持{も}ちになります","持{も}たれます","持{も}ってくださいます"],
    note:"Humble お + stem + する, used to offer help. お持ちになる would be honorific."},
-  {topic:"keigo_hum", type:"fill", en:"I met the teacher last year for the first time (humble 'met').",
+  {tag:"hum.osuru", type:"fill", en:"I met the teacher last year for the first time (humble 'met').",
    q:"先生{せんせい}に去年{きょねん}はじめて___。", a:"お会{あ}いしました",
    choices:["お会{あ}いしました","お会{あ}いになりました","会{あ}われました","お目{め}にかかられた"],
    note:"会う → お会いする (humble). お会いになる would be honorific."},
-  {topic:"keigo_hum", type:"mc", en:"Which is the humble (謙譲語) form of あげる?",
+  {tag:"hum.verbs", type:"mc", en:"Which is the humble (謙譲語) form of あげる?",
    q:"あげる の謙譲語{けんじょうご}は？", a:"さしあげる",
    choices:["さしあげる","くださる","いただく","おあげになる"],
    note:"あげる → さしあげる (humble), e.g. 先生にお茶をさしあげる."},
 
-  /* ---------------- Directions ---------------- */
-  {topic:"dir", type:"fill", en:"Please go straight along this street.",
+  /* directions */
+  {tag:"dir.verbs", type:"fill", en:"Please go straight along this street.",
    q:"この道{みち}を___行{い}ってください。", a:"まっすぐ",
    choices:["まっすぐ","まがって","とおって","わたって"],
    note:"まっすぐ行く = to go straight. The road takes を."},
-  {topic:"dir", type:"fill", en:"Turn right at the second corner.",
+  {tag:"dir.verbs", type:"fill", en:"Turn right at the second corner.",
    q:"二{ふた}つ目{め}の角{かど}を右{みぎ}に___ください。", a:"まがって",
    choices:["まがって","とおって","わたって","もどって"],
    note:"(place)を (direction)に まがる = to turn. かど = corner."},
-  {topic:"dir", type:"mc", en:"Particle: you go STRAIGHT ___ the street.",
+  {tag:"dir.particles", type:"mc", en:"Particle: you go STRAIGHT ___ the street.",
    q:"この道{みち}（　）まっすぐ行{い}く。", a:"を",
    choices:["を","に","で","へ"],
    note:"With まっすぐ行く / 通る / 渡る, the path you move along takes を."},
-  {topic:"dir", type:"mc", en:"Particle: turn right ___ the corner.",
+  {tag:"dir.particles", type:"mc", en:"Particle: turn right ___ the corner.",
    q:"角{かど}を右{みぎ}（　）まがる。", a:"に",
    choices:["に","を","で","と"],
    note:"The direction you turn (right/left) takes に: 右にまがる."},
-  {topic:"dir", type:"fill", en:"As for the bookstore — turn right at the 2nd light and it's on the left.",
+  {tag:"dir.particles", type:"fill", en:"As for the bookstore — turn right at the 2nd light and it's on the left.",
    q:"本屋{ほんや}___、二{ふた}つ目{め}の信号{しんごう}を右{みぎ}にまがったら、左{ひだり}に見{み}えます。", a:"なら",
    choices:["なら","から","でも","とき"],
    note:"〜なら = 'as for / if you mean…', used to pick up the topic someone asked about."},
-  {topic:"dir", type:"fill", en:"Pass in front of the Clock Tower and keep going.",
+  {tag:"dir.verbs", type:"fill", en:"Pass in front of the Clock Tower and keep going.",
    q:"クロックタワーの前{まえ}を___、まっすぐ行{い}ってください。", a:"通{とお}って",
    choices:["通{とお}って","渡{わた}って","まがって","戻{もど}って"],
    note:"(place)を通る = to pass by/through. 渡る = to cross (a street)."},
 
-  /* ---------------- Passive ---------------- */
-  {topic:"passive", type:"mc", en:"What is the passive form of 読む?",
+  /* passive */
+  {tag:"pass.conj", type:"mc", en:"What is the passive form of 読む?",
    q:"読{よ}む の受身{うけみ}は？", a:"読{よ}まれる",
    choices:["読{よ}まれる","読{よ}ませる","読{よ}める","読{よ}まされる"],
    note:"う-verb passive: final -u → -a + れる. 読ませる=causative, 読める=potential."},
-  {topic:"passive", type:"mc", en:"What is the passive form of 笑う?",
+  {tag:"pass.conj", type:"mc", en:"What is the passive form of 笑う?",
    q:"笑{わら}う の受身{うけみ}は？", a:"笑{わら}われる",
    choices:["笑{わら}われる","笑{わら}あれる","笑{わら}わせる","笑{わら}える"],
    note:"For う-ending verbs, う → わ (not あ): 笑う→笑われる."},
-  {topic:"passive", type:"fill", en:"Because I didn't do homework, I was scolded by the teacher.",
+  {tag:"pass.sent", type:"fill", en:"Because I didn't do homework, I was scolded by the teacher.",
    q:"宿題{しゅくだい}をしなかったので、先生{せんせい}に___。", a:"怒{おこ}られた",
    choices:["怒{おこ}られた","怒{おこ}らせた","怒{おこ}った","怒{おこ}れた"],
    note:"Passive of 怒る (scold) = 怒られる. The 'villain' (先生) takes に."},
-  {topic:"passive", type:"mc", en:"Particle: my roommate broke my PC → roommate ___ PC was broken.",
+  {tag:"pass.sent", type:"mc", en:"Particle: my roommate broke my PC → roommate ___ PC was broken.",
    q:"ルームメイト（　）パソコンをこわされた。", a:"に",
    choices:["に","が","を","で"],
    note:"In passive sentences the doer ('villain') is marked with に."},
-  {topic:"passive", type:"fill", en:"A thief got into the house while I was sleeping.",
+  {tag:"pass.sent", type:"fill", en:"A thief got into the house while I was sleeping.",
    q:"寝{ね}ている間{あいだ}に、どろぼうに___。", a:"入{はい}られた",
    choices:["入{はい}られた","入{はい}れた","入{はい}った","入{はい}らせた"],
    note:"入る→入られた (passive). Suffering passive: 'I was negatively affected by the thief entering.'"},
-  {topic:"passive", type:"fill", en:"My older brother ate my snacks (on me).",
+  {tag:"pass.sent", type:"fill", en:"My older brother ate my snacks (on me).",
    q:"子供{こども}の時{とき}、私{わたし}は兄{あに}におかしを___。", a:"食{た}べられた",
    choices:["食{た}べられた","食{た}べさせた","食{た}べた","食{た}べさせられた"],
    note:"食べる→食べられた. The victim is 私 (は), the villain 兄 (に)."},
-  {topic:"passive", type:"fill", en:"Rewrite: みんなが笑った → I was laughed at by everyone.",
+  {tag:"pass.sent", type:"fill", en:"Rewrite: みんなが笑った → I was laughed at by everyone.",
    q:"日本語{にほんご}をまちがえて、みんなに___。", a:"笑{わら}われた",
    choices:["笑{わら}われた","笑{わら}った","笑{わら}わせた","笑{わら}える"],
    note:"Villain みんな→に, verb 笑う→笑われた."},
 
-  /* ---------------- Favors ---------------- */
-  {topic:"favors", type:"fill", en:"My little sister was stuck, so I helped her.",
+  /* favors */
+  {tag:"favors", type:"fill", en:"My little sister was stuck, so I helped her.",
    q:"妹{いもうと}が困{こま}っていたから、手伝{てつだ}って___。", a:"あげた",
    choices:["あげた","くれた","もらった","くださった"],
    note:"〜てあげる = I do a favor FOR someone (equal/lower)."},
-  {topic:"favors", type:"fill", en:"The teacher was carrying heavy bags, so I carried them for her (humble).",
+  {tag:"favors", type:"fill", en:"The teacher was carrying heavy bags, so I carried them for her (humble).",
    q:"先生{せんせい}が重{おも}いにもつを持{も}っていらっしゃったから、持{も}って___。", a:"さしあげた",
    choices:["さしあげた","くださった","いただいた","あげられた"],
    note:"〜てさしあげる = humble 'do a favor for a superior'."},
-  {topic:"favors", type:"fill", en:"The teacher taught me the kanji (honorific received favor).",
+  {tag:"favors", type:"fill", en:"The teacher taught me the kanji (honorific received favor).",
    q:"漢字{かんじ}が読{よ}めなかった時{とき}、先生{せんせい}が教{おし}えて___。", a:"くださった",
    choices:["くださった","いただいた","さしあげた","くれた"],
    note:"〜てくださる = honorific 'someone (superior) does a favor for me'. Subject 先生 = が."},
-  {topic:"favors", type:"fill", en:"My roommate cooked rice for me when I was sick.",
+  {tag:"favors", type:"fill", en:"My roommate cooked rice for me when I was sick.",
    q:"病気{びょうき}になった時{とき}、ルームメイトがご飯{はん}を作{つく}って___。", a:"くれた",
    choices:["くれた","あげた","もらった","さしあげた"],
    note:"〜てくれる = someone does a favor for me. Subject (ルームメイト) takes が."},
-  {topic:"favors", type:"fill", en:"I had the person next to me show me the textbook.",
+  {tag:"favors", type:"fill", en:"I had the person next to me show me the textbook.",
    q:"教科書{きょうかしょ}をわすれた時{とき}、となりの人{ひと}に見{み}せて___。", a:"もらった",
    choices:["もらった","くれた","あげた","くださった"],
    note:"〜てもらう = I RECEIVE a favor (I get someone to do sth). The doer takes に."},
-  {topic:"favors", type:"fill", en:"I had the teacher write a recommendation letter for me (humble receive).",
+  {tag:"favors", type:"fill", en:"I had the teacher write a recommendation letter for me (humble receive).",
    q:"先生{せんせい}にすいせんじょうを書{か}いて___。", a:"いただいた",
    choices:["いただいた","くださった","さしあげた","もらいられた"],
    note:"〜ていただく = humble version of 〜てもらう (receive from a superior)."},
 
-  /* ---------------- 間に vs 間 ---------------- */
-  {topic:"aida", type:"fill", en:"While my sister is away, let's eat the cake! (one-time action)",
+  /* 間に / 間 */
+  {tag:"aida", type:"fill", en:"While my sister is away, let's eat the cake! (one-time action)",
    q:"妹{いもうと}がいない___、ケーキを食{た}べてしまおう！", a:"間{あいだ}に",
    choices:["間{あいだ}に","間{あいだ}","とき","から"],
    note:"間に = a ONE-TIME action happens at some point during the period."},
-  {topic:"aida", type:"fill", en:"While I was sleeping, a thief broke in. (one-time event)",
+  {tag:"aida", type:"fill", en:"While I was sleeping, a thief broke in. (one-time event)",
    q:"寝{ね}ている___、どろぼうに入{はい}られた！", a:"間{あいだ}に",
    choices:["間{あいだ}に","間{あいだ}","あとで","まえに"],
    note:"間に — the break-in happened at one point during the sleeping period."},
-  {topic:"aida", type:"fill", en:"I usually listen to music the whole time I study. (continuous)",
+  {tag:"aida", type:"fill", en:"I usually listen to music the whole time I study. (continuous)",
    q:"私{わたし}はたいてい、勉強{べんきょう}している___、音楽{おんがく}を聞{き}きます。", a:"間{あいだ}",
    choices:["間{あいだ}","間{あいだ}に","とき","ながら"],
    note:"間 (no に) = the S2 action CONTINUES throughout the whole S1 period."},
-  {topic:"aida", type:"mc", en:"When do you use 間に (with に)?",
+  {tag:"aida", type:"mc", en:"When do you use 間に (with に)?",
    q:"「間{あいだ}に」を使{つか}うのは、S2が___とき。", a:"一回{いっかい}だけ起{お}こる",
    choices:["一回{いっかい}だけ起{お}こる","ずっと続{つづ}く","毎日{まいにち}起{お}こる","起{お}こらない"],
    note:"間に → S2 is a momentary / one-time action. 間 → S2 continues the whole time."},
 
-  /* ---------------- くする / にする ---------------- */
-  {topic:"change", type:"fill", en:"The room was messy, so I made it clean.",
+  /* くする / にする */
+  {tag:"change", type:"fill", en:"The room was messy, so I made it clean.",
    q:"部屋{へや}がめちゃくちゃだったので、___しました。", a:"きれいに",
    choices:["きれいに","きれく","きれいな","きれいで"],
    note:"きれい is a な-adjective → な-adj + にする. 'made it clean'."},
-  {topic:"change", type:"fill", en:"If I were president, I'd make this country safer.",
+  {tag:"change", type:"fill", en:"If I were president, I'd make this country safer.",
    q:"私{わたし}がだいとうりょうだったら、この国{くに}をもっと___します。", a:"安全{あんぜん}に",
    choices:["安全{あんぜん}に","安全{あんぜん}く","安全{あんぜん}な","安全{あんぜん}で"],
    note:"安全 is a な-adjective → 安全にする = 'make safe'."},
-  {topic:"change", type:"fill", en:"We're inside the library, so we have to be (keep it) quiet.",
+  {tag:"change", type:"fill", en:"We're inside the library, so we have to be (keep it) quiet.",
    q:"図書館{としょかん}の中{なか}なので、___しなければいけません。", a:"しずかに",
    choices:["しずかに","しずかく","しずかな","しずかで"],
    note:"しずか is a な-adjective → にする."},
-  {topic:"change", type:"mc", en:"To 'make something' with an い-adjective (e.g. 大きい), you…",
+  {tag:"change", type:"mc", en:"To 'make something' with an い-adjective (e.g. 大きい), you…",
    q:"い形容詞{けいようし}で「〜する」を作{つく}るときは？", a:"いを く にして する（大{おお}きくする）",
    choices:["いを く にして する（大{おお}きくする）","そのまま にする（大{おお}きいにする）","な をつけて する","にする をつける"],
    note:"い-adj: drop い → く + する (大きい→大きくする). な-adj/Noun → にする."},
 
-  /* ---------------- Desire ---------------- */
-  {topic:"desire", type:"mc", en:"Particle: I want a new computer.",
+  /* desire */
+  {tag:"desire", type:"mc", en:"Particle: I want a new computer.",
    q:"新{あたら}しいパソコン（　）ほしいです。", a:"が",
    choices:["が","を","に","で"],
    note:"(object)が ほしい — the desired object takes が."},
-  {topic:"desire", type:"fill", en:"After I graduate, I want to travel to Japan.",
+  {tag:"desire", type:"fill", en:"After I graduate, I want to travel to Japan.",
    q:"大学{だいがく}を卒業{そつぎょう}したら、日本{にほん}に旅行{りょこう}___です。", a:"したい",
    choices:["したい","してほしい","しないで","しよう"],
    note:"V-stem + たい = 'I want to (do)'. する→したい."},
-  {topic:"desire", type:"fill", en:"I want my parents NOT to overwork.",
+  {tag:"desire", type:"fill", en:"I want my parents NOT to overwork.",
    q:"私{わたし}は両親{りょうしん}に働{はたら}きすぎ___ほしいです。", a:"ないで",
    choices:["ないで","て","たい","なくて"],
    note:"V ないで + ほしい = 'want someone NOT to do'. (Person takes に.)"},
-  {topic:"desire", type:"fill", en:"I don't want him to give up his dream.",
+  {tag:"desire", type:"fill", en:"I don't want him to give up his dream.",
    q:"彼{かれ}にゆめをあきらめて___です。", a:"ほしくない",
    choices:["ほしくない","ほしい","たくない","ないでほしい"],
    note:"〜てほしくない = the negative of 〜てほしい ('don't want them to')."},
-  {topic:"desire", type:"mc", en:"Particle: which marks the PERSON in 〜てほしい?",
+  {tag:"desire", type:"mc", en:"Particle: which marks the PERSON in 〜てほしい?",
    q:"ルームメイト（　）早{はや}く起{お}きてほしい。", a:"に",
    choices:["に","が","を","へ"],
    note:"(person)に + V てほしい — the person you want to act takes に."},
 
-  /* ---------------- Particles (review §6) ---------------- */
-  {topic:"particle", type:"mc", en:"Be careful ___ bikes (watch out for bikes).",
+  /* particles */
+  {tag:"particle", type:"mc", en:"Be careful ___ bikes (watch out for bikes).",
    q:"自転車{じてんしゃ}（　）気{き}をつけてください。", a:"に",
    choices:["に","を","が","で"],
    note:"気をつける takes に for the thing you watch out for: 〜に気をつける."},
-  {topic:"particle", type:"mc", en:"My bike was stolen by a thief.",
+  {tag:"particle", type:"mc", en:"My bike was stolen by a thief.",
    q:"泥棒{どろぼう}（　）自転車{じてんしゃ}をぬすまれた。", a:"に",
    choices:["に","が","を","から"],
    note:"Passive doer = に. (自転車 is the thing taken, marked を.)"},
-  {topic:"particle", type:"mc", en:"I've gotten used to Stanford life.",
+  {tag:"particle", type:"mc", en:"I've gotten used to Stanford life.",
    q:"スタンフォードの生活{せいかつ}（　）なれました。", a:"に",
    choices:["に","を","が","で"],
    note:"〜になれる = to get used to ~. Takes に."},
-  {topic:"particle", type:"mc", en:"After graduating college, I plan to work in Japan.",
+  {tag:"particle", type:"mc", en:"After graduating college, I plan to work in Japan.",
    q:"大学{だいがく}を卒業{そつぎょう}したら、日本{にほん}（　）仕事{しごと}をしようと思{おも}う。", a:"で",
    choices:["で","に","を","へ"],
    note:"で marks the LOCATION where an action (work) takes place."},
-  {topic:"particle", type:"mc", en:"Compared with high school, college classes got harder.",
+  {tag:"particle", type:"mc", en:"Compared with high school, college classes got harder.",
    q:"高校{こうこう}の時{とき}（　）くらべて、大学{だいがく}の授業{じゅぎょう}はむずかしくなった。", a:"に",
    choices:["に","と","を","で"],
    note:"〜にくらべて = compared with ~."},
 
-  /* ---------------- Conjugation (review §9) ---------------- */
-  {topic:"conj", type:"mc", en:"Without making a reservation, I went… (する, negative て-form 'without doing')",
+  /* conjugation */
+  {tag:"conj", type:"mc", en:"Without making a reservation, I went… (する, negative て-form 'without doing')",
    q:"よやくを（　）旅館{りょかん}に行{い}った。", a:"しないで",
    choices:["しないで","しなくて","しないと","しないので"],
    note:"〜ないで = 'without doing'. する→しないで."},
-  {topic:"conj", type:"mc", en:"These sneakers are too small and hard to walk in. (歩く → 'hard to ~')",
+  {tag:"conj", type:"mc", en:"These sneakers are too small and hard to walk in. (歩く → 'hard to ~')",
    q:"このスニーカーは小{ちい}さすぎて、（　）にくいです。", a:"歩{ある}き",
    choices:["歩{ある}き","歩{ある}く","歩{ある}いて","歩{ある}か"],
    note:"V-stem + にくい = 'hard to do'. 歩く→歩き+にくい."},
-  {topic:"conj", type:"mc", en:"That student studies daily, so she's surely diligent. (まじめだ + はず)",
+  {tag:"conj", type:"mc", en:"That student studies daily, so she's surely diligent. (まじめだ + はず)",
    q:"あの学生{がくせい}は毎日{まいにち}勉強{べんきょう}しているから、（　）はずです。", a:"まじめな",
    choices:["まじめな","まじめだ","まじめの","まじめ"],
    note:"な-adjective + はず → な-adj + な + はず: まじめなはず."},
-  {topic:"conj", type:"mc", en:"Yasmin is vegetarian, so she surely doesn't eat meat. (食べる + はず, negative)",
+  {tag:"conj", type:"mc", en:"Yasmin is vegetarian, so she surely doesn't eat meat. (食べる + はず, negative)",
    q:"ヤスミンさんはベジタリアンだから、肉{にく}を（　）はずです。", a:"食{た}べない",
    choices:["食{た}べない","食{た}べる","食{た}べた","食{た}べなくて"],
    note:"Plain negative + はず: 食べないはず = 'surely doesn't eat'."},
-  {topic:"conj", type:"mc", en:"I don't remember what time I came home. (帰る + か, embedded question)",
+  {tag:"conj", type:"mc", en:"I don't remember what time I came home. (帰る + か, embedded question)",
    q:"何時{なんじ}に（　）かおぼえていません。", a:"帰{かえ}った",
    choices:["帰{かえ}った","帰{かえ}る","帰{かえ}って","帰{かえ}り"],
    note:"Plain past + か = embedded question: 'what time I came home'."},
-  {topic:"conj", type:"mc", en:"I don't know whether the exam is difficult. (むずかしい + かどうか)",
+  {tag:"conj", type:"mc", en:"I don't know whether the exam is difficult. (むずかしい + かどうか)",
    q:"試験{しけん}が（　）わかりません。", a:"むずかしいかどうか",
    choices:["むずかしいかどうか","むずかしくてどうか","むずかしいかどうかが","むずかしいだかどうか"],
    note:"い-adj plain + かどうか = 'whether or not it's ~'."},
 ];
 
 /* =========================================================================
-   STATE + SETTINGS
+   READING PASSAGES  (3–5 short paragraphs + comprehension MCs)
+   ========================================================================= */
+const STORIES = [
+  {title:"部長{ぶちょう}との食事{しょくじ}", focus:"Focus: Honorifics 尊敬語 (Lesson 19)",
+   body:[
+     "先週{せんしゅう}、部長{ぶちょう}が出張{しゅっちょう}からお帰{かえ}りになりました。たけしさんは空港{くうこう}まで迎{むか}えに行{い}きました。",
+     "部長{ぶちょう}は「おなかがすいた」とおっしゃいました。それで、二人{ふたり}はレストランで晩{ばん}ご飯{はん}を召{め}し上{あ}がりました。部長{ぶちょう}がごちそうしてくださいました。",
+     "レストランで、部長{ぶちょう}は仕事{しごと}の話{はなし}をなさいました。ワインも少{すこ}し召{め}し上{あ}がりました。たけしさんは、とてもいい時間{じかん}だと思{おも}いました。",
+     "家{いえ}に帰{かえ}る前{まえ}に、部長{ぶちょう}はたけしさんを車{くるま}で送{おく}ってくださいました。たけしさんは、ていねいにおれいを伝{つた}えました。"
+   ],
+   q:[
+     {q:"晩{ばん}ご飯{はん}のお金{かね}は、だれが払{はら}いましたか。", en:"Who paid for dinner?", a:"部長{ぶちょう}",
+      choices:["部長{ぶちょう}","たけしさん","レストランの人{ひと}","二人{ふたり}で半分{はんぶん}ずつ"],
+      note:"「ごちそうしてくださいました」= the manager treated him (honorific favor)."},
+     {q:"たけしさんは、どうやって家{いえ}に帰{かえ}りましたか。", en:"How did Takeshi get home?", a:"部長{ぶちょう}の車{くるま}で",
+      choices:["部長{ぶちょう}の車{くるま}で","バスで","歩{ある}いて","電車{でんしゃ}で"],
+      note:"「車{くるま}で送{おく}ってくださいました」= the manager gave him a ride (honorific favor)."},
+     {q:"部長{ぶちょう}は、レストランで何{なに}をなさいましたか。", en:"What did the manager do at the restaurant?", a:"仕事{しごと}の話{はなし}をした",
+      choices:["仕事{しごと}の話{はなし}をした","ねた","本{ほん}を読{よ}んだ","歌{うた}を歌{うた}った"],
+      note:"「仕事{しごと}の話{はなし}をなさいました」— なさる is the honorific of する."}
+   ]},
+
+  {title:"道{みち}をたずねる", focus:"Focus: Directions 道案内 (Lesson 20)",
+   body:[
+     "メアリーさんは「にしき屋{や}」という店{みせ}に行{い}きたかったです。でも、道{みち}が分{わ}かりませんでした。それで、知{し}らない人{ひと}に聞{き}きました。",
+     "「すみません、にしき屋{や}はどこにあるか、教{おし}えていただけませんか。」その人{ひと}は「にしき屋{や}なら、この道{みち}をまっすぐ行{い}って、二{ふた}つ目{め}の角{かど}を右{みぎ}にまがってください」と言{い}いました。",
+     "「まっすぐ行{い}ったら、信号{しんごう}があります。その信号{しんごう}を渡{わた}って、左{ひだり}にまがると、にしき屋{や}が見{み}えますよ。」",
+     "雨{あめ}がふっていたので、その人{ひと}は店{みせ}までいっしょに行{い}ってくれました。メアリーさんは、とてもうれしかったです。"
+   ],
+   q:[
+     {q:"メアリーさんは、どこに行{い}きたいですか。", en:"Where does Mary want to go?", a:"にしき屋{や}という店{みせ}",
+      choices:["にしき屋{や}という店{みせ}","ゆうびんきょく","学校{がっこう}","えき"],
+      note:"She's looking for the shop called にしき屋."},
+     {q:"二{ふた}つ目{め}の角{かど}を、どちらにまがりますか。", en:"Which way at the 2nd corner?", a:"右{みぎ}",
+      choices:["右{みぎ}","左{ひだり}","まっすぐ","もどる"],
+      note:"「二{ふた}つ目{め}の角{かど}を右{みぎ}にまがって」— direction takes に."},
+     {q:"どうして、その人{ひと}は店{みせ}までいっしょに行{い}きましたか。", en:"Why did the stranger walk her to the shop?", a:"雨{あめ}がふっていたから",
+      choices:["雨{あめ}がふっていたから","店{みせ}の人{ひと}だから","ひまだったから","友{とも}だちだから"],
+      note:"「雨{あめ}がふっていたので…行{い}ってくれました」— ので gives the reason."}
+   ]},
+
+  {title:"どろぼう！", focus:"Focus: The passive 受身 (Lesson 21)",
+   body:[
+     "先週{せんしゅう}、ジョンさんは大変{たいへん}でした。夜{よる}、寝{ね}ている間{あいだ}に、どろぼうに入{はい}られたのです。",
+     "朝{あさ}起{お}きると、部屋{へや}がめちゃくちゃでした。パソコンとスマホがぬすまれていました。バイトでためたお金{かね}もありませんでした。ジョンさんはびっくりしました。",
+     "ジョンさんはすぐに警察{けいさつ}に連絡{れんらく}しました。「かぎはかけてありましたか」と聞{き}かれましたが、よく覚{おぼ}えていませんでした。",
+     "何日{なんにち}かあとで、犯人{はんにん}がつかまりました。ジョンさんの友{とも}だちも、いろいろな物{もの}をくれたり、ごちそうしてくれたりしました。ジョンさんは「いい友{とも}だちがいて、幸{しあわ}せだ」と思{おも}いました。"
+   ],
+   q:[
+     {q:"ジョンさんが寝{ね}ている間{あいだ}に、何{なに}がありましたか。", en:"What happened while John was asleep?", a:"どろぼうに入{はい}られた",
+      choices:["どろぼうに入{はい}られた","火事{かじ}があった","友{とも}だちが来{き}た","何{なに}もなかった"],
+      note:"「どろぼうに入{はい}られた」— suffering passive of 入{はい}る."},
+     {q:"何{なに}がぬすまれましたか。", en:"What was stolen?", a:"パソコンとスマホとお金{かね}",
+      choices:["パソコンとスマホとお金{かね}","車{くるま}","本{ほん}だけ","スニーカー"],
+      note:"「パソコンとスマホがぬすまれていました…お金{かね}もありませんでした」."},
+     {q:"さいごに、ジョンさんはどうして「幸{しあわ}せだ」と思{おも}いましたか。", en:"Why does John feel lucky at the end?", a:"いい友{とも}だちがいるから",
+      choices:["いい友{とも}だちがいるから","お金{かね}がもどったから","新{あたら}しいパソコンを買{か}ったから","犯人{はんにん}になったから"],
+      note:"He's grateful for kind friends, even after the burglary."}
+   ]},
+
+  {title:"親切{しんせつ}な人{ひと}たち", focus:"Focus: Giving & receiving favors (review)",
+   body:[
+     "先週{せんしゅう}、私{わたし}は病気{びょうき}になりました。遠{とお}い病院{びょういん}に行{い}かなければいけませんでした。",
+     "ルームメイトがご飯{はん}を作{つく}ってくれました。それから、薬{くすり}も買{か}ってきてくれました。私{わたし}は何度{なんど}もお礼{れい}を言{い}いました。",
+     "漢字{かんじ}の宿題{しゅくだい}が分{わ}からなかった時{とき}、先生{せんせい}が教{おし}えてくださいました。となりの人{ひと}にもノートを見{み}せてもらいました。",
+     "みんながやさしくしてくれたので、私{わたし}もいつか、みんなに何{なに}かしてあげたいと思{おも}います。"
+   ],
+   q:[
+     {q:"だれが、ご飯{はん}を作{つく}ってくれましたか。", en:"Who cooked for the writer?", a:"ルームメイト",
+      choices:["ルームメイト","先生{せんせい}","となりの人{ひと}","お母{かあ}さん"],
+      note:"「ルームメイトがご飯{はん}を作{つく}ってくれました」(〜てくれる = did for me)."},
+     {q:"漢字{かんじ}の宿題{しゅくだい}は、だれが教{おし}えてくれましたか。", en:"Who taught the kanji homework?", a:"先生{せんせい}",
+      choices:["先生{せんせい}","ルームメイト","となりの人{ひと}","友{とも}だち"],
+      note:"「先生{せんせい}が教{おし}えてくださいました」(honorific 〜てくださる)."},
+     {q:"私{わたし}は、いつか何{なに}をしたいですか。", en:"What does the writer want to do someday?", a:"みんなに何{なに}かしてあげたい",
+      choices:["みんなに何{なに}かしてあげたい","引{ひ}っこしたい","病院{びょういん}で働{はたら}きたい","漢字{かんじ}をわすれたい"],
+      note:"「みんなに何{なに}かしてあげたい」— wants to return the favors (〜てあげる)."}
+   ]},
+
+  {title:"ジョンさんのアルバイト", focus:"Focus: Humble speech 謙譲語 (Lesson 20)",
+   body:[
+     "ジョンさんはレストランでアルバイトをしています。今日{きょう}は店長{てんちょう}が「夕方{ゆうがた}はいそがしくなるから、たのむよ」と言{い}いました。",
+     "お客{きゃく}さんが来{き}たら、ジョンさんは「いらっしゃいませ。何名様{なんめいさま}ですか」と聞{き}きます。そして、「少々{しょうしょう}お待{ま}ちください」と言{い}います。",
+     "あるお客{きゃく}さんが、しょうゆを落{お}としました。スカートがよごれてしまいました。ジョンさんは「すぐにタオルをお持{も}ちします」と言{い}いました。",
+     "店{みせ}がしまったあと、店長{てんちょう}は「今日{きょう}はジョンのおかげで助{たす}かったよ」と言{い}いました。ジョンさんは、とてもうれしかったです。"
+   ],
+   q:[
+     {q:"お客{きゃく}さんが来{き}たら、ジョンさんは何{なに}と言{い}いますか。", en:"What does John say when guests arrive?", a:"いらっしゃいませ",
+      choices:["いらっしゃいませ","さようなら","おかえりなさい","いただきます"],
+      note:"「いらっしゃいませ」is the set greeting to customers."},
+     {q:"お客{きゃく}さんの何{なに}が、よごれましたか。", en:"What of the customer's got dirty?", a:"スカート",
+      choices:["スカート","スニーカー","シャツ","かばん"],
+      note:"「スカートがよごれてしまいました」."},
+     {q:"「お持{も}ちします」は、どんな話{はな}し方{かた}ですか。", en:"What kind of speech is お持ちします?", a:"謙譲語{けんじょうご}（へりくだった言{い}い方{かた}）",
+      choices:["謙譲語{けんじょうご}（へりくだった言{い}い方{かた}）","尊敬語{そんけいご}","ふつうの言{い}い方{かた}","命令{めいれい}"],
+      note:"お＋verb-stem＋する is HUMBLE (謙譲語), used to offer help politely."}
+   ]},
+];
+
+/* =========================================================================
+   GLOSS ENGINE  ("Sentence X-ray")
+   ========================================================================= */
+const PARTICLES={
+  "は":"Topic marker — 'as for ~' (what the sentence is about).",
+  "が":"Subject marker; also the wanted thing with ほしい, and the giver with 〜てくれる.",
+  "を":"Direct-object marker; with 通る・まっすぐ行く・渡る it marks the path you move along.",
+  "に":"Target / time / direction; the doer ('villain') in passives; the person in 〜てほしい・〜てもらう.",
+  "へ":"Direction marker — 'to (a place)'.",
+  "で":"Place where an action happens, or means/method ('by').",
+  "と":"'and' / 'with'; also marks a quote before 言う・思う.",
+  "から":"'from' (place/time) or 'because'.",
+  "まで":"'until' / 'as far as'.",
+  "の":"Links nouns — possessive 'of' (X の Y = Y of X).",
+  "も":"'also / too'.",
+  "や":"'and' (a partial list, '… and so on').",
+  "ね":"Seeks agreement — '…, right?'.",
+  "よ":"Adds emphasis / tells the listener something new.",
+  "か":"Question marker; inside a sentence = embedded 'whether/what…'.",
+  "ので":"'because' (softer, explanatory than から).",
+  "のに":"'even though'.",
+  "より":"'than' / 'from'."
+};
+const LEX={
+  // copula / aux / connectors
+  "です":{c:"polite copula — 'is/are'"},
+  "ます":{c:"polite verb ending"},
+  "ました":{c:"polite past ending"},
+  "ません":{c:"polite negative ending"},
+  "ています":{c:"〜ています — ongoing action / current state (polite)"},
+  "ていました":{c:"〜ていました — was doing / state (past polite)"},
+  "ている":{c:"〜ている — ongoing action / state"},
+  "てください":{c:"〜てください — polite request, 'please ~'"},
+  "ください":{c:"'please give' / 'please do' (request)"},
+  "ましょう":{c:"〜ましょう — 'let's ~ / shall we'"},
+  "でしょう":{c:"'probably' / seeking agreement"},
+  "そうです":{c:"〜そうです — hearsay, 'I hear that ~'"},
+  "みたいだ":{c:"〜みたいだ — 'it seems like ~'"},
+  "はず":{m:"expectation — 'should be / surely'"},
+  "とき":{m:"'when ~'"},
+  "たら":{c:"conditional — 'if/when ~'"},
+  "なら":{c:"contextual — 'if it's ~ / as for ~'"},
+  "けど":{c:"'but / although'"},
+  "ながら":{c:"〜ながら — 'while doing ~'"},
+  "なければいけません":{c:"〜なければいけません — 'must / have to'"},
+  "なければいけませんでした":{c:"'had to'"},
+  "と思います":{c:"と思{おも}います — 'I think that ~'"},
+  "と思いました":{c:"と思{おも}いました — 'I thought that ~'"},
+  "おかげで":{m:"'thanks to ~'"},
+  "という":{c:"〜という — 'called / named ~'"},
+  "間に":{d:"間 (あいだ)",c:"間{あいだ}に — 'while ~' (a one-time thing happens during it)"},
+  "という店":{m:"'a shop called ~'"},
+  // 尊敬語 (honorific)
+  "いらっしゃいませ":{c:"set phrase — 'welcome' (to a customer)"},
+  "いらっしゃる":{d:"いらっしゃる",c:"honorific = 行く/来る/いる",m:"to go/come/be (respectful)"},
+  "おっしゃいました":{d:"おっしゃる",c:"honorific = 言う, polite past",m:"to say (respectful)"},
+  "なさいました":{d:"なさる",c:"honorific = する, polite past",m:"to do (respectful)"},
+  "召し上がる":{d:"召し上がる (めしあがる)",c:"honorific = 食べる/飲む",m:"to eat/drink (respectful)"},
+  "召し上がりました":{d:"召し上がる (めしあがる)",c:"honorific, polite past",m:"to eat/drink (respectful)"},
+  "お帰りになりました":{d:"帰る (かえる)",c:"honorific お〜になる, polite past",m:"to return home (respectful)"},
+  "ごちそうして":{d:"ごちそうする",c:"て-form",m:"to treat (someone) to a meal"},
+  "くださいました":{c:"〜てくださる — a respected person did (a favor) for me"},
+  "送ってくださいました":{d:"送る (おくる)",c:"〜てくださる (honorific favor)",m:"gave me a ride / saw me off"},
+  "教えてくださいました":{d:"教える (おしえる)",c:"〜てくださる (honorific favor)",m:"taught me"},
+  "お待ちください":{c:"honorific request — 'please wait'"},
+  // 謙譲語 (humble)
+  "申します":{d:"申す (もうす)",c:"humble = 言う",m:"to say (humble); 〜と申します = 'my name is ~'"},
+  "お持ちします":{d:"持つ (もつ)",c:"humble お〜する",m:"to carry (humble) — offering help"},
+  // directions
+  "まっすぐ":{m:"'straight (ahead)'"},
+  "まがって":{d:"まがる (曲がる)",c:"て-form",m:"to turn (right/left)"},
+  "渡って":{d:"渡る (わたる)",c:"て-form",m:"to cross (a street)"},
+  "見えます":{d:"見える (みえる)",c:"polite",m:"to be visible / can be seen"},
+  "教えていただけませんか":{c:"super-polite request — 'could you please tell me ~?'"},
+  // passive
+  "入られた":{d:"入る (はいる)",c:"passive, plain past (suffering)",m:"to have someone get in (on you)"},
+  "ぬすまれていました":{d:"ぬすむ (盗む)",c:"passive + ていました",m:"had been stolen"},
+  "聞かれました":{d:"聞く (きく)",c:"passive, polite past",m:"to be asked"},
+  "つかまりました":{d:"つかまる (捕まる)",c:"polite past",m:"to be caught / arrested"},
+  "かけてありました":{d:"かける",c:"〜てある (prepared state), past",m:"had been locked/set"},
+  // favors
+  "作ってくれました":{d:"作る (つくる)",c:"〜てくれる",m:"(someone) made it for me"},
+  "買ってきてくれました":{d:"買ってくる (かってくる)",c:"〜てくれる",m:"went and bought it for me"},
+  "見せてもらいました":{d:"見せる (みせる)",c:"〜てもらう",m:"got (someone) to show me"},
+  "してくれた":{c:"〜てくれる — did it for me"},
+  "してあげたい":{c:"〜てあげたい — want to do it for someone"},
+  "助かった":{d:"助かる (たすかる)",c:"plain past",m:"to be saved / helped out"},
+  // misc story verbs
+  "連絡しました":{d:"連絡する (れんらくする)",c:"polite past",m:"to contact"},
+  "びっくりしました":{d:"びっくりする",c:"polite past",m:"to be surprised"},
+  "迎えに行きました":{d:"迎えに行く (むかえにいく)",c:"polite past",m:"to go pick someone up"},
+  "行ってくれました":{d:"行く (いく)",c:"〜てくれる",m:"went (for me)"},
+  "落としました":{d:"落とす (おとす)",c:"polite past",m:"to drop"},
+  "よごれてしまいました":{d:"よごれる",c:"〜てしまう (regret/completion)",m:"ended up getting dirty"},
+  "ふっていた":{d:"ふる",c:"〜ていた",m:"was falling (rain/snow)"},
+  "たかった":{c:"〜たかった — 'wanted to ~' (past)"}
+};
+const DICT={};
+VOCAB.forEach(v=>{const k=strip(v.jp);if(!DICT[k])DICT[k]={d:k,m:v.en};});
+Object.keys(PARTICLES).forEach(k=>DICT[k]={p:PARTICLES[k]});
+Object.keys(LEX).forEach(k=>DICT[k]=Object.assign({},DICT[k]||{},LEX[k]));
+const GLOSS_MAX=12;
+
+function toAtoms(s){
+  const a=[];let i=0;
+  while(i<s.length){
+    const m=/^([\u4e00-\u9faf\u3005\u3006\u30f5\u30f6]+)\{([^{}]+)\}/.exec(s.slice(i));
+    if(m){a.push({p:m[1],r:m[2]});i+=m[0].length;}else{a.push({p:s[i]});i++;}
+  }
+  return a;
+}
+function atomHTML(a){return (F()&&a.r)?`<ruby>${a.p}<rt>${a.r}</rt></ruby>`:a.p;}
+function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");}
+function gloss(text){
+  if(text==null) return "";
+  if(!state.settings.gloss) return jp(text,F());
+  const atoms=toAtoms(text);let html="",i=0;
+  while(i<atoms.length){
+    let e=null,len=0;const max=Math.min(GLOSS_MAX,atoms.length-i);
+    for(let L=max;L>=1;L--){const cand=atoms.slice(i,i+L).map(x=>x.p).join("");if(DICT[cand]){e=DICT[cand];len=L;break;}}
+    if(e){
+      const span=atoms.slice(i,i+len);const w=span.map(x=>x.p).join("");
+      const r=span.some(x=>x.r)?span.map(x=>x.r||x.p).join(""):"";
+      const inner=span.map(atomHTML).join("");
+      html+=`<span class="${e.p?"gloss part":"gloss"}" data-w="${esc(w)}" data-r="${esc(r)}" data-d="${esc(e.d||"")}" data-c="${esc(e.c||"")}" data-m="${esc(e.m||"")}" data-p="${esc(e.p||"")}">${inner}</span>`;
+      i+=len;
+    }else{html+=atomHTML(atoms[i]);i++;}
+  }
+  return html;
+}
+function renderStory(item,card){
+  const s=item.story;
+  card.innerHTML=`
+    <span class="qtopic">📖 Reading</span>
+    <div class="qtext" style="font-size:21px;line-height:1.3">${gloss(s.title)}</div>
+    <div class="story-focus">${s.focus}</div>
+    <div class="readbody">${s.body.map(p=>`<p>${gloss(p)}</p>`).join("")}</div>
+    <div class="gloss-hint">${state.settings.gloss?"💡 Tap or hover any underlined word for its dictionary form, conjugation & particle notes.":"💡 Turn on “Sentence X-ray” in ⚙️ to tap words for grammar help."}</div>
+    <button class="nextbtn" id="nextBtn">${jp("読{よ}んだ！問題{もんだい}へ · Quiz me →",F())}</button>`;
+  $("nextBtn").onclick=next;renderHUD();
+}
+
+/* =========================================================================
+   STATE
    ========================================================================= */
 const SETTINGS = [
   {key:"furigana", label:"Furigana (reading aids)", sub:"Turn off to quiz yourself exam-style", def:true},
@@ -717,295 +940,287 @@ const SETTINGS = [
   {key:"streak",   label:"Show streak",  sub:"Consecutive correct 🔥", def:true},
   {key:"progress", label:"Show progress",sub:"Bar + accuracy", def:true},
   {key:"sound",    label:"Sound effects",sub:"Little blips on answer", def:true},
+  {key:"gloss",    label:"Sentence X-ray", sub:"Tap/hover words for dict form, conjugation & particles", def:false},
   {key:"autoadv",  label:"Auto-advance", sub:"Jump to next after correct MC", def:false},
 ];
+const MODES = [
+  {key:"exam",   t:"⭐ Mixed Exam", d:"Interleaves everything, like the real test"},
+  {key:"mc",     t:"⚡ Quick Quiz", d:"Multiple-choice rapid fire"},
+  {key:"madlibs",t:"📝 Mad Libs",  d:"Fill the blank from a word bank"},
+  {key:"flash",  t:"🃏 Flashcards",d:"Flip & self-grade (production)"},
+  {key:"read",   t:"📖 Reading",   d:"Short stories + comprehension Qs"},
+];
+const COUNTS=[10,20,30,50];
+
 const state = {
-  settings:{}, selected:new Set(TOPICS.map(t=>t.key)), mode:"exam",
+  settings:{}, selected:new Set(LEAVES.map(l=>l.id)), collapsed:new Set(),
+  mode:"exam", count:20,
   queue:[], idx:0, score:0, streak:0, best:0, correct:0, total:0, answered:false, misses:[]
 };
 SETTINGS.forEach(s=>state.settings[s.key]=s.def);
 
-const MODES = [
-  {key:"exam",   t:"⭐ Mixed Exam", d:"Interleaves every topic, like the real test"},
-  {key:"mc",     t:"⚡ Quick Quiz", d:"Multiple-choice rapid fire"},
-  {key:"madlibs",t:"📝 Mad Libs",  d:"Fill the blank from a word bank"},
-  {key:"flash",  t:"🃏 Flashcards",d:"Flip & self-grade (production)"},
-];
-
-/* =========================================================================
-   HELPERS
-   ========================================================================= */
+/* helpers */
 const $=id=>document.getElementById(id);
 function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]];}return a;}
 function sample(arr,n,exclude){const pool=arr.filter(x=>x!==exclude);return shuffle(pool).slice(0,n);}
 const F=()=>state.settings.furigana;
+function leafCount(id){
+  return GRAMMAR.filter(g=>g.tag===id).length + PAIRS.filter(p=>p.tag===id).length + VOCAB.filter(v=>v.tag===id).length;
+}
+const groupLeaves=gp=>LEAVES.filter(l=>l.gp===gp).map(l=>l.id);
+const lessonLeaves=Lid=>LEAVES.filter(l=>l.lesson===Lid).map(l=>l.id);
+function triState(ids){const on=ids.filter(i=>state.selected.has(i)).length;return on===0?"off":(on===ids.length?"on":"part");}
 
-// audio blips
 let actx=null;
 function beep(ok){
-  if(!state.settings.sound) return;
-  try{
-    actx=actx||new (window.AudioContext||window.webkitAudioContext)();
-    const o=actx.createOscillator(),g=actx.createGain();
-    o.connect(g);g.connect(actx.destination);
-    o.type="sine";
-    const now=actx.currentTime;
-    if(ok){o.frequency.setValueAtTime(660,now);o.frequency.setValueAtTime(880,now+.09);}
-    else{o.frequency.setValueAtTime(300,now);o.frequency.setValueAtTime(196,now+.1);}
-    g.gain.setValueAtTime(.0001,now);g.gain.exponentialRampToValueAtTime(.16,now+.02);
-    g.gain.exponentialRampToValueAtTime(.0001,now+.22);
-    o.start(now);o.stop(now+.24);
-  }catch(e){}
+  if(!state.settings.sound)return;
+  try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+    const o=actx.createOscillator(),g=actx.createGain();o.connect(g);g.connect(actx.destination);o.type="sine";
+    const n=actx.currentTime;
+    if(ok){o.frequency.setValueAtTime(660,n);o.frequency.setValueAtTime(880,n+.09);}
+    else{o.frequency.setValueAtTime(300,n);o.frequency.setValueAtTime(196,n+.1);}
+    g.gain.setValueAtTime(.0001,n);g.gain.exponentialRampToValueAtTime(.16,n+.02);g.gain.exponentialRampToValueAtTime(.0001,n+.22);
+    o.start(n);o.stop(n+.24);}catch(e){}
 }
-function confetti(){
-  const b=$("burst");const ch=["🎉","✨","🌸","⭐","🎊","💮"];
-  for(let i=0;i<16;i++){
-    const s=document.createElement("div");s.className="conf";
-    s.textContent=ch[Math.random()*ch.length|0];
-    s.style.left=(Math.random()*100)+"%";s.style.top="-40px";
-    s.style.animationDelay=(Math.random()*.25)+"s";
-    s.style.fontSize=(16+Math.random()*16)+"px";
-    b.appendChild(s);setTimeout(()=>s.remove(),1400);
-  }
-}
+function confetti(){const b=$("burst");const ch=["🎉","✨","🌸","⭐","🎊","💮"];
+  for(let i=0;i<16;i++){const s=document.createElement("div");s.className="conf";s.textContent=ch[Math.random()*ch.length|0];
+    s.style.left=(Math.random()*100)+"%";s.style.top="-40px";s.style.animationDelay=(Math.random()*.25)+"s";s.style.fontSize=(16+Math.random()*16)+"px";
+    b.appendChild(s);setTimeout(()=>s.remove(),1400);}}
 
 /* =========================================================================
-   BUILD QUEUE for a given mode + selected topics
+   QUEUE
    ========================================================================= */
 function buildQueue(){
   const sel=state.selected;
-  const gItems=GRAMMAR.filter(g=>sel.has(g.topic));
-  const vItems=VOCAB.filter(v=>sel.has(v.t));
-  const pItems=PAIRS.filter(p=>sel.has(p.topic));
+  const G=GRAMMAR.filter(g=>sel.has(g.tag));
+  const V=VOCAB.filter(v=>sel.has(v.tag));
+  const P=PAIRS.filter(p=>sel.has(p.tag));
   let q=[];
-
+  if(state.mode==="read"){
+    const stories=shuffle(STORIES.slice());
+    const n=(state.count==="all")?stories.length:Math.min(state.count,stories.length);
+    stories.slice(0,n).forEach(s=>{
+      q.push({kind:"story",story:s,tag:"reading"});
+      s.q.forEach(qq=>q.push({kind:"mc",tag:"reading",readingTitle:s.title,q:qq.q,en:qq.en,a:qq.a,choices:shuffle(qq.choices.slice()),note:qq.note}));
+    });
+    return q; // keep order: each story precedes its questions
+  }
   if(state.mode==="flash"){
-    // flashcards from vocab + transformation pairs
-    vItems.forEach(v=>q.push({kind:"flash",front:v.en,frontEn:true,back:v.jp,note:"L19–21 vocabulary",topic:v.t}));
-    pItems.forEach(p=>q.push({kind:"flash",front:p.front,back:p.back,note:p.note,topic:p.topic}));
+    V.forEach(v=>q.push({kind:"flash",front:v.en,frontEn:true,back:v.jp,note:LEAFINFO[v.tag].gpLabel,tag:v.tag}));
+    P.forEach(p=>q.push({kind:"flash",front:p.front,back:p.back,note:p.note,tag:p.tag}));
     return shuffle(q);
   }
-
   if(state.mode==="madlibs"){
-    // only fill-in grammar items
-    gItems.filter(g=>g.type==="fill").forEach(g=>q.push(toQ(g)));
+    G.filter(g=>g.type==="fill").forEach(g=>q.push(toQ(g)));
     return shuffle(q);
   }
-
   if(state.mode==="mc"){
-    // grammar MC + grammar fill rendered as MC + vocab MC + pair MC
-    gItems.forEach(g=>q.push(toQ(g,true)));      // force MC styling
-    vItems.forEach(v=>q.push(vocabMC(v,vItems)));
-    pItems.forEach(p=>q.push(pairMC(p,pItems)));
+    G.forEach(g=>q.push(toQ(g,true)));
+    V.forEach(v=>q.push(vocabMC(v,V)));
+    P.forEach(p=>q.push(pairMC(p,P)));
     return shuffle(q);
   }
-
-  // exam (mixed): grammar (native type) + some vocab MC + some pair MC
-  gItems.forEach(g=>q.push(toQ(g)));
-  shuffle(vItems).slice(0,Math.min(14,vItems.length)).forEach(v=>q.push(vocabMC(v,vItems)));
-  shuffle(pItems).slice(0,Math.min(10,pItems.length)).forEach(p=>q.push(pairMC(p,pItems)));
+  // exam (mixed)
+  G.forEach(g=>q.push(toQ(g)));
+  V.forEach(v=>q.push(vocabMC(v,V)));
+  P.forEach(p=>q.push(pairMC(p,P)));
   return shuffle(q);
 }
-function toQ(g,forceMC){
-  return {kind:(forceMC?"mc":(g.type==="fill"?"fill":"mc")),
-    topic:g.topic,q:g.q,en:g.en,a:g.a,choices:shuffle(g.choices.slice()),note:g.note};
-}
+function toQ(g,forceMC){return {kind:(forceMC?"mc":(g.type==="fill"?"fill":"mc")),tag:g.tag,q:g.q,en:g.en,a:g.a,choices:shuffle(g.choices.slice()),note:g.note};}
 function vocabMC(v,pool){
-  const dir=Math.random()<.5;
-  if(dir){ // jp -> en
-    const wrong=sample(pool,3,v).map(x=>x.en);
-    return {kind:"mc",topic:v.t,q:v.jp,en:"What does this mean?",a:v.en,
-      choices:shuffle([v.en,...wrong]),note:"L19–21 vocabulary",plainChoices:true};
-  }else{ // en -> jp
-    const wrong=sample(pool,3,v).map(x=>x.jp);
-    return {kind:"mc",topic:v.t,q:v.en,en:"Which Japanese word is this?",enPrompt:true,a:v.jp,
-      choices:shuffle([v.jp,...wrong]),note:"L19–21 vocabulary"};
-  }
+  if(Math.random()<.5){const wrong=sample(pool,3,v).map(x=>x.en);
+    return {kind:"mc",tag:v.tag,q:v.jp,en:"What does this mean?",a:v.en,choices:shuffle([v.en,...wrong]),note:LEAFINFO[v.tag].gpLabel,plainChoices:true};}
+  const wrong=sample(pool,3,v).map(x=>x.jp);
+  return {kind:"mc",tag:v.tag,q:v.en,en:"Which Japanese word is this?",enPrompt:true,a:v.jp,choices:shuffle([v.jp,...wrong]),note:LEAFINFO[v.tag].gpLabel};
 }
 function pairMC(p,pool){
-  const wrong=sample(pool.filter(x=>x.topic===p.topic),3,p).map(x=>x.back);
-  while(wrong.length<3){const r=sample(pool,1,p)[0];if(r&&!wrong.includes(r.back))wrong.push(r.back);}
-  const label=p.topic==="passive"?"Give the passive form":
-              p.topic==="keigo_son"?"Give the honorific (尊敬語)":
-              p.topic==="keigo_hum"?"Give the humble (謙譲語)":"Transform";
-  return {kind:"mc",topic:p.topic,q:p.front,en:label,a:p.back,
-    choices:shuffle([p.back,...wrong]),note:p.note};
+  let wrong=sample(pool.filter(x=>x.tag===p.tag),3,p).map(x=>x.back);
+  while(wrong.length<3){const r=sample(pool,1,p)[0];if(r&&!wrong.includes(r.back)&&r.back!==p.back)wrong.push(r.back);else if(!r)break;}
+  const lf=LEAFINFO[p.tag];
+  const label=p.tag.startsWith("pass")?"Give the passive form":
+    p.tag.startsWith("son")?"Give the honorific (尊敬語)":
+    p.tag.startsWith("hum")?"Give the humble (謙譲語)":"Transform";
+  return {kind:"mc",tag:p.tag,q:p.front,en:label,a:p.back,choices:shuffle([p.back,...wrong]),note:p.note};
 }
+function availableCount(){return state.mode==="read"?STORIES.length:buildQueue().length;}
 
 /* =========================================================================
-   RENDER: HOME
+   RENDER HOME
    ========================================================================= */
-function topicCount(k){
-  if(k==="vocab")return VOCAB.length;
-  return GRAMMAR.filter(g=>g.topic===k).length + PAIRS.filter(p=>p.topic===k).length;
+function cbHTML(stt){return `<span class="cb ${stt==="on"?"on":(stt==="part"?"part":"")}"></span>`;}
+function renderTree(){
+  const tree=$("tree");tree.innerHTML="";
+  TAXONOMY.forEach(L=>{
+    const Lids=lessonLeaves(L.id);
+    const Lst=triState(Lids);
+    const lessonCnt=Lids.reduce((s,i)=>s+leafCount(i),0);
+    const lEl=document.createElement("div");
+    lEl.className="lesson"+(state.collapsed.has(L.id)?" collapsed":"");
+    let body="";
+    L.groups.forEach(g=>{
+      const gids=g.subs.map(s=>s.id);
+      const gst=triState(gids);
+      const gcnt=gids.reduce((s,i)=>s+leafCount(i),0);
+      let subsHTML="";
+      g.subs.forEach(s=>{
+        const sst=state.selected.has(s.id)?"on":"off";
+        subsHTML+=`<div class="sub" data-leaf="${s.id}">${cbHTML(sst)}<span>${s.label}</span><span class="cnt">${leafCount(s.id)}</span></div>`;
+      });
+      body+=`<div class="gp">
+        <div class="gp-head" data-gp="${g.id}">${cbHTML(gst)}<span class="gt">${g.label}</span><span class="cnt">${gcnt}</span></div>
+        <div class="subs">${subsHTML}</div></div>`;
+    });
+    lEl.innerHTML=`
+      <div class="lesson-head">
+        <span class="cb-wrap" data-lesson="${L.id}">${cbHTML(Lst)}</span>
+        <span class="em">${L.em}</span>
+        <span class="lt">${L.label}</span>
+        <span class="cnt">${lessonCnt}</span>
+        <span class="caret" data-caret="${L.id}">▼</span>
+      </div>
+      <div class="lesson-body">${body}</div>`;
+    tree.appendChild(lEl);
+  });
+  // wire
+  tree.querySelectorAll("[data-leaf]").forEach(el=>el.onclick=e=>{e.stopPropagation();const id=el.dataset.leaf;
+    if(state.selected.has(id))state.selected.delete(id);else state.selected.add(id);refreshHome();});
+  tree.querySelectorAll("[data-gp]").forEach(el=>el.onclick=e=>{e.stopPropagation();const ids=groupLeaves(el.dataset.gp);
+    if(triState(ids)==="on")ids.forEach(i=>state.selected.delete(i));else ids.forEach(i=>state.selected.add(i));refreshHome();});
+  tree.querySelectorAll("[data-lesson]").forEach(el=>el.onclick=e=>{e.stopPropagation();const ids=lessonLeaves(el.dataset.lesson);
+    if(triState(ids)==="on")ids.forEach(i=>state.selected.delete(i));else ids.forEach(i=>state.selected.add(i));refreshHome();});
+  // caret + header toggles collapse (but not when tapping the checkbox)
+  tree.querySelectorAll(".lesson-head").forEach((h)=>{
+    h.onclick=(e)=>{ if(e.target.closest("[data-lesson]"))return;
+      const Lid=h.querySelector(".caret").dataset.caret;
+      if(state.collapsed.has(Lid))state.collapsed.delete(Lid);else state.collapsed.add(Lid);renderTree();};
+  });
 }
-function renderHome(){
-  const tg=$("topicGrid");tg.innerHTML="";
-  TOPICS.forEach(t=>{
-    const on=state.selected.has(t.key);
-    const c=document.createElement("div");
-    c.className="chip"+(on?" on":"");
-    c.innerHTML=`<span class="em">${t.em}</span><span>${t.label}</span><span class="ct">${topicCount(t.key)}</span>`;
-    c.onclick=()=>{if(state.selected.has(t.key))state.selected.delete(t.key);else state.selected.add(t.key);renderHome();};
-    tg.appendChild(c);
-  });
+function renderModes(){
   const mg=$("modeGrid");mg.innerHTML="";
-  MODES.forEach(m=>{
-    const on=state.mode===m.key;
-    const b=document.createElement("button");
-    b.className="mode"+(on?" on":"");
+  MODES.forEach(m=>{const b=document.createElement("button");b.className="mode"+(state.mode===m.key?" on":"");
     b.innerHTML=`<div class="mt">${m.t}</div><div class="md">${m.d}</div>`;
-    b.onclick=()=>{state.mode=m.key;renderHome();};
-    mg.appendChild(b);
-  });
-  $("startBtn").disabled=state.selected.size===0;
+    b.onclick=()=>{state.mode=m.key;refreshHome();};mg.appendChild(b);});
+}
+function renderCount(){
+  const isRead=state.mode==="read";
+  const N=availableCount();
+  $("availMeta").textContent= isRead ? (N+" stories") : (N+" available");
+  const row=$("countRow");row.innerHTML="";
+  const base= isRead ? [1,2,3] : COUNTS;
+  const opts=base.filter(c=>c<N);
+  if(state.count!=="all" && (state.count>=N)) state.count="all";
+  if(state.count!=="all" && !opts.includes(state.count)) state.count = opts.length?opts[Math.min(1,opts.length-1)]:"all";
+  opts.forEach(c=>{const b=document.createElement("button");b.className="countchip"+(state.count===c?" on":"");
+    b.textContent=c;b.onclick=()=>{state.count=c;renderCount();};row.appendChild(b);});
+  const allb=document.createElement("button");allb.className="countchip"+(state.count==="all"?" on":"");
+  allb.textContent="All · "+N+(isRead?" stories":"");allb.onclick=()=>{state.count="all";renderCount();};row.appendChild(allb);
+}
+function refreshHome(){
+  renderTree();renderModes();renderCount();
+  const isRead=state.mode==="read";
+  $("readNote").classList.toggle("hidden",!isRead);
+  const total=[...state.selected].reduce((s,i)=>s+leafCount(i),0);
+  $("selMeta").textContent=state.selected.size+" sub-topics · "+total+" cards";
+  $("startBtn").disabled = isRead ? (STORIES.length===0) : (state.selected.size===0 || availableCount()===0);
 }
 
 /* =========================================================================
-   GAME FLOW
+   GAME
    ========================================================================= */
 function startGame(queue){
-  state.queue=queue||buildQueue();
-  if(!state.queue.length){
-    alert("No cards for that combo 🙃\n\nFlashcards & Mad Libs only cover certain topics. Try ‘Mixed Exam’, or add the Vocabulary / Honorifics / Passive topics.");
-    return;
-  }
-  state.idx=0;state.score=0;state.streak=0;state.best=0;state.correct=0;
-  state.total=0;state.answered=false;state.misses=[];
-  $("home").classList.add("hidden");$("results").classList.add("hidden");
-  $("game").classList.remove("hidden");
-  $("modeTitle").textContent=MODES.find(m=>m.key===state.mode).t;
-  renderHUD();renderQuestion();
-  window.scrollTo(0,0);
+  let q=queue||buildQueue();
+  if(!q.length){alert("No cards for that combo 🙃\n\nFlashcards & Mad Libs only cover certain topics. Try ‘Mixed Exam’, or add Vocabulary / Honorifics / Passive.");return;}
+  const n = (state.count==="all"||state.mode==="read")?q.length:Math.min(state.count,q.length);
+  state.queue=q.slice(0,n);
+  state.idx=0;state.score=0;state.streak=0;state.best=0;state.correct=0;state.total=0;state.answered=false;state.misses=[];
+  $("home").classList.add("hidden");$("results").classList.add("hidden");$("game").classList.remove("hidden");
+  $("modeTitle").textContent=MODES.find(m=>m.key===state.mode).t+" · "+state.queue.length+"Q";
+  renderHUD();renderQuestion();window.scrollTo(0,0);
 }
 function renderHUD(){
-  const s=state.settings;const hud=$("hud");hud.innerHTML="";
-  const items=[];
+  const s=state.settings;const hud=$("hud");const items=[];
   if(s.score)  items.push(`<div class="stat"><div class="v">${state.score}</div><div class="l">Score</div></div>`);
   if(s.streak) items.push(`<div class="stat streak"><div class="v">${state.streak>0?"🔥"+state.streak:state.streak}</div><div class="l">Streak</div></div>`);
-  if(s.progress){
-    const acc=state.total?Math.round(state.correct/state.total*100):100;
+  if(s.progress){const acc=state.total?Math.round(state.correct/state.total*100):100;
     items.push(`<div class="stat acc"><div class="v">${acc}%</div><div class="l">Accuracy</div></div>`);
-    items.push(`<div class="stat"><div class="v">${state.idx+ (state.answered?1:0)}/${state.queue.length}</div><div class="l">Done</div></div>`);
-  }
-  hud.style.display=items.length?"flex":"none";
-  hud.innerHTML=items.join("");
+    items.push(`<div class="stat"><div class="v">${state.idx+(state.answered?1:0)}/${state.queue.length}</div><div class="l">Done</div></div>`);}
+  hud.style.display=items.length?"flex":"none";hud.innerHTML=items.join("");
   $("progWrap").style.display=s.progress?"block":"none";
   $("progBar").style.width=(state.queue.length?(state.idx/state.queue.length*100):0)+"%";
 }
+function topicLabel(tag){const i=LEAFINFO[tag];return i?(i.em+" "+i.gpLabel):"";}
 function renderQuestion(){
-  state.answered=false;
-  const item=state.queue[state.idx];
-  if(!item){return endGame();}
+  state.answered=false;const item=state.queue[state.idx];
+  if(!item)return endGame();
   const card=$("qcard");
-  const topicLabel=(TOPICS.find(t=>t.key===item.topic)||{}).label||"";
-  if(item.kind==="flash"){renderFlash(item,card,topicLabel);return;}
-  // MC or FILL (fill uses a word bank but logic ~same)
-  const promptHTML = item.enPrompt ? `<span style="font-size:.85em">${item.q}</span>`
-    : (item.plainChoices ? jp(item.q,F()) : jp(item.q,F()));
+  if(item.kind==="flash"){renderFlash(item,card);return;}
+  if(item.kind==="story"){renderStory(item,card);return;}
+  const qt = item.tag==="reading" ? "📖 Reading" : topicLabel(item.tag);
+  const promptHTML = item.enPrompt ? `<span style="font-size:.9em">${item.q}</span>`
+                    : (item.plainChoices ? jp(item.q,F()) : gloss(item.q));
   card.innerHTML=`
-    <span class="qtopic">${topicLabel}</span>
+    <span class="qtopic">${qt}</span>
     ${item.en?`<div class="qen">${item.en}</div>`:""}
     <div class="qtext">${promptHTML}</div>
     <div class="choices" id="choiceArea"></div>
     <div class="feedback" id="fb"></div>`;
   const area=$("choiceArea");
-  item.choices.forEach((ch,i)=>{
-    const b=document.createElement("button");
-    b.className="choice";
-    b.dataset.val=ch;                       // raw value (with {furigana} markup) for matching
-    const key=String.fromCharCode(65+i);
-    const isEnglishChoice = item.plainChoices===true;   // jp->en vocab: choices are English
-    b.innerHTML=`<span class="key">${key}</span><span>${isEnglishChoice?ch:jp(ch,F())}</span>`;
-    b.onclick=()=>pick(b,ch,item);
-    area.appendChild(b);
-  });
+  item.choices.forEach((ch,i)=>{const b=document.createElement("button");b.className="choice";b.dataset.val=ch;
+    const key=String.fromCharCode(65+i);const isEng=item.plainChoices===true;
+    b.innerHTML=`<span class="key">${key}</span><span>${isEng?ch:jp(ch,F())}</span>`;
+    b.onclick=()=>pick(b,ch,item);area.appendChild(b);});
   renderHUD();
 }
 function pick(btn,choice,item){
-  if(state.answered)return;
-  state.answered=true;state.total++;
-  const ok = strip(choice)===strip(item.a);
-  const buttons=[...document.querySelectorAll("#choiceArea .choice")];
-  buttons.forEach(b=>{
-    b.classList.add("locked");
-    if(strip(b.dataset.val)===strip(item.a))b.classList.add("correct");
-  });
-  if(ok){
-    btn.classList.add("pop");
-    state.correct++;state.streak++;state.best=Math.max(state.best,state.streak);
-    state.score+= 10 + Math.min(state.streak,10)*2; // streak bonus
-    beep(true);
-    if(state.streak>0 && state.streak%5===0)confetti();
-  }else{
-    btn.classList.add("wrong","shake");
-    buttons.forEach(b=>{if(!b.classList.contains("correct")&&b!==btn)b.classList.add("dim");});
-    state.streak=0;beep(false);
-    state.misses.push({q:item.q,a:item.a,yours:choice,en:item.en,topic:item.topic,note:item.note});
-  }
-  showFeedback(ok,item);
-  renderHUD();
-  if(ok && state.settings.autoadv){setTimeout(next,750);}
+  if(state.answered)return;state.answered=true;state.total++;
+  const ok=strip(choice)===strip(item.a);
+  [...document.querySelectorAll("#choiceArea .choice")].forEach(b=>{b.classList.add("locked");
+    if(strip(b.dataset.val)===strip(item.a))b.classList.add("correct");});
+  if(ok){btn.classList.add("pop");state.correct++;state.streak++;state.best=Math.max(state.best,state.streak);
+    state.score+=10+Math.min(state.streak,10)*2;beep(true);if(state.streak%5===0)confetti();}
+  else{btn.classList.add("wrong","shake");
+    [...document.querySelectorAll("#choiceArea .choice")].forEach(b=>{if(!b.classList.contains("correct")&&b!==btn)b.classList.add("dim");});
+    state.streak=0;beep(false);state.misses.push({q:item.q,a:item.a,yours:choice,en:item.en,tag:item.tag,note:item.note});}
+  showFeedback(ok,item);renderHUD();
+  if(ok&&state.settings.autoadv)setTimeout(next,750);
 }
 function showFeedback(ok,item){
   const fb=$("fb");fb.className="feedback show "+(ok?"ok":"no");
-  const verdict = ok ? ["正解{せいかい}！ Correct","よくできました！","Nice — 🔥"][Math.random()*3|0]
-                     : "ざんねん… Not quite";
-  fb.innerHTML=`
-    <div class="verdict">${ok?"✅":"❌"} ${jp(verdict,F())}</div>
+  const v=ok?["正解{せいかい}！ Correct","よくできました！","Nice — 🔥"][Math.random()*3|0]:"ざんねん… Not quite";
+  fb.innerHTML=`<div class="verdict">${ok?"✅":"❌"} ${jp(v,F())}</div>
     ${ok?"":`<div>Answer: <span class="ans">${jp(item.a,F())}</span></div>`}
-    ${item.note?`<div style="margin-top:6px;color:var(--ink-soft)">${jp(item.note,F())}</div>`:""}
+    ${item.note?`<div style="margin-top:6px;color:var(--ink-soft)">${gloss(item.note)}</div>`:""}
     <button class="nextbtn" id="nextBtn">${state.idx+1>=state.queue.length?"結果{けっか}を見{み}る · Finish":"次{つぎ}へ · Next"}</button>`;
-  $("nextBtn").onclick=next;
-  fb.scrollIntoView({behavior:"smooth",block:"nearest"});
+  $("nextBtn").innerHTML=jp($("nextBtn").textContent,F());
+  $("nextBtn").onclick=next;fb.scrollIntoView({behavior:"smooth",block:"nearest"});
 }
-
-/* ---- flashcards ---- */
-function renderFlash(item,card,topicLabel){
-  const frontText = item.frontEn ? `<div class="big">${item.front}</div><div class="small">— recall the Japanese —</div>`
-                                 : `<div class="big">${jp(item.front,F())}</div><div class="small">— transform it —</div>`;
+function renderFlash(item,card){
+  const front=item.frontEn?`<div class="big">${item.front}</div><div class="small">— recall the Japanese —</div>`
+    :`<div class="big">${jp(item.front,F())}</div><div class="small">— transform it —</div>`;
   card.innerHTML=`
-    <span class="qtopic">${topicLabel}</span>
-    <div class="flash" id="flashEl">
-      <div class="flash-inner">
-        <div class="face front">${frontText}<div class="tap">tap to flip ⟳</div></div>
-        <div class="face back">
-          <div class="big">${jp(item.back,F())}</div>
-          ${item.note?`<div class="note">${jp(item.note,F())}</div>`:""}
-          <div class="tap">how'd you do?</div>
-        </div>
-      </div>
-    </div>
+    <span class="qtopic">${topicLabel(item.tag)}</span>
+    <div class="flash" id="flashEl"><div class="flash-inner">
+      <div class="face front">${front}<div class="tap">tap to flip ⟳</div></div>
+      <div class="face back"><div class="big">${jp(item.back,F())}</div>${item.note?`<div class="note">${jp(item.note,F())}</div>`:""}<div class="tap">how'd you do?</div></div>
+    </div></div>
     <div class="flash-actions" id="flashActions" style="visibility:hidden">
-      <button class="fbtn miss" id="missBtn">✗ Missed it</button>
-      <button class="fbtn got" id="gotBtn">✓ Got it</button>
+      <button class="fbtn miss" id="missBtn">✗ Missed it</button><button class="fbtn got" id="gotBtn">✓ Got it</button>
     </div>`;
-  const fe=$("flashEl");
-  fe.onclick=()=>{fe.classList.add("flipped");$("flashActions").style.visibility="visible";};
-  $("gotBtn").onclick=()=>flashGrade(true,item);
-  $("missBtn").onclick=()=>flashGrade(false,item);
-  renderHUD();
+  const fe=$("flashEl");fe.onclick=()=>{fe.classList.add("flipped");$("flashActions").style.visibility="visible";};
+  $("gotBtn").onclick=()=>flashGrade(true,item);$("missBtn").onclick=()=>flashGrade(false,item);renderHUD();
 }
 function flashGrade(ok,item){
   state.total++;
-  if(ok){state.correct++;state.streak++;state.best=Math.max(state.best,state.streak);state.score+=10;beep(true);
-    if(state.streak%5===0)confetti();}
-  else{state.streak=0;beep(false);
-    state.misses.push({q:item.front,a:item.back,yours:"(self-graded miss)",en:"",topic:item.topic,note:item.note});}
+  if(ok){state.correct++;state.streak++;state.best=Math.max(state.best,state.streak);state.score+=10;beep(true);if(state.streak%5===0)confetti();}
+  else{state.streak=0;beep(false);state.misses.push({q:item.front,a:item.back,yours:"(self-graded miss)",en:"",tag:item.tag,note:item.note});}
   next();
 }
-function next(){state.idx++;renderHUD();
-  if(state.idx>=state.queue.length){endGame();}else{renderQuestion();window.scrollTo({top:0,behavior:"smooth"});}}
+function next(){state.idx++;renderHUD();if(state.idx>=state.queue.length)endGame();else{renderQuestion();window.scrollTo({top:0,behavior:"smooth"});}}
 
-/* =========================================================================
-   RESULTS
-   ========================================================================= */
 function endGame(){
   $("game").classList.add("hidden");$("results").classList.remove("hidden");
   const acc=state.total?Math.round(state.correct/state.total*100):0;
-  $("resCorrect").textContent=`${state.correct}/${state.total}`;
-  $("resAcc").textContent=acc+"%";
-  $("resBest").textContent=state.best;
+  $("resCorrect").textContent=`${state.correct}/${state.total}`;$("resAcc").textContent=acc+"%";$("resBest").textContent=state.best;
   let emoji,title,sub;
   if(acc>=90){emoji="🏆";title="あっぱれ！ Exam-ready";sub="You've basically got this. Do one more pass with furigana OFF.";confetti();}
   else if(acc>=75){emoji="🌸";title="いい調子！ Strong";sub="Solid. Drill your misses below and you're golden.";}
@@ -1016,95 +1231,87 @@ function endGame(){
   if(state.misses.length){
     rb.innerHTML=`<h3>Review your ${state.misses.length} miss${state.misses.length>1?"es":""}</h3>`+
       state.misses.map(m=>`<div class="miss">
-        ${m.en?`<div style="font-size:12px;color:var(--ink-soft);margin-bottom:3px">${m.en}</div>`:""}
-        <div class="mq">${jp(m.q,F())}</div>
-        <div class="ma">→ ${jp(m.a,F())}</div>
+        <div style="font-size:11px;color:var(--ink-soft);margin-bottom:3px">${topicLabel(m.tag)}${m.en?" · "+m.en:""}</div>
+        <div class="mq">${jp(m.q,F())}</div><div class="ma">→ ${jp(m.a,F())}</div>
         ${m.note?`<div style="font-size:12.5px;color:var(--ink-soft);margin-top:4px">${jp(m.note,F())}</div>`:""}
       </div>`).join("");
     $("reviewMissBtn").style.display="block";
-  }else{
-    rb.innerHTML=`<h3>No misses — clean run! 🎉</h3>`;
-    $("reviewMissBtn").style.display="none";
-  }
+  }else{rb.innerHTML=`<h3>No misses — clean run! 🎉</h3>`;$("reviewMissBtn").style.display="none";}
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
-/* =========================================================================
-   SETTINGS SHEET
-   ========================================================================= */
+/* settings */
 function renderSettings(){
   const list=$("toggleList");list.innerHTML="";
-  SETTINGS.forEach(s=>{
-    const on=state.settings[s.key];
-    const row=document.createElement("div");row.className="toggle-row";
-    row.innerHTML=`<div><div class="tl">${s.label}</div><div class="ts">${s.sub}</div></div>
-      <button class="sw${on?" on":""}" data-k="${s.key}"></button>`;
-    row.querySelector(".sw").onclick=function(){
-      state.settings[s.key]=!state.settings[s.key];
-      this.classList.toggle("on");
-      // live refresh
-      if(!$("game").classList.contains("hidden")) {renderHUD();renderQuestion.refresh&&renderQuestion.refresh();}
-    };
-    list.appendChild(row);
-  });
+  SETTINGS.forEach(s=>{const on=state.settings[s.key];const row=document.createElement("div");row.className="toggle-row";
+    row.innerHTML=`<div><div class="tl">${s.label}</div><div class="ts">${s.sub}</div></div><button class="sw${on?" on":""}" data-k="${s.key}"></button>`;
+    row.querySelector(".sw").onclick=function(){state.settings[s.key]=!state.settings[s.key];this.classList.toggle("on");
+      if(!$("game").classList.contains("hidden")){renderHUD();if(!state.answered)renderQuestion();}};
+    list.appendChild(row);});
 }
 
-/* =========================================================================
-   WIRE UP
-   ========================================================================= */
-$("allBtn").onclick=()=>{TOPICS.forEach(t=>state.selected.add(t.key));renderHome();};
-$("noneBtn").onclick=()=>{state.selected.clear();renderHome();};
-$("examBtn").onclick=()=>{TOPICS.forEach(t=>state.selected.add(t.key));state.mode="exam";renderHome();};
+/* wire */
+$("allBtn").onclick=()=>{LEAVES.forEach(l=>state.selected.add(l.id));refreshHome();};
+$("noneBtn").onclick=()=>{state.selected.clear();refreshHome();};
+$("expandBtn").onclick=()=>{state.collapsed.clear();renderTree();};
+$("collapseBtn").onclick=()=>{TAXONOMY.forEach(L=>state.collapsed.add(L.id));renderTree();};
 $("startBtn").onclick=()=>startGame();
 $("quitBtn").onclick=()=>{if(confirm("Quit this round? Progress will reset."))backHome();};
 $("againBtn").onclick=()=>startGame();
 $("homeBtn").onclick=backHome;
 $("reviewMissBtn").onclick=()=>{
-  // rebuild a queue from misses (re-fetch full items so choices regenerate)
   const missQ=state.misses.map(m=>{
-    const g=GRAMMAR.find(x=>x.q===m.q && x.a===m.a);
-    if(g)return toQ(g);
-    const p=PAIRS.find(x=>x.front===m.q && x.back===m.a);
-    if(p)return pairMC(p,PAIRS);
-    const v=VOCAB.find(x=>x.jp===m.q||x.en===m.q);
-    if(v)return vocabMC(v,VOCAB);
-    return {kind:"mc",topic:m.topic,q:m.q,en:m.en,a:m.a,choices:shuffle([m.a,m.yours].filter(Boolean)),note:m.note};
-  });
-  startGame(shuffle(missQ));
+    const g=GRAMMAR.find(x=>x.q===m.q&&x.a===m.a);if(g)return toQ(g);
+    const p=PAIRS.find(x=>x.front===m.q&&x.back===m.a);if(p)return pairMC(p,PAIRS);
+    const v=VOCAB.find(x=>x.jp===m.q||x.en===m.q);if(v)return vocabMC(v,VOCAB);
+    return {kind:"mc",tag:m.tag,q:m.q,en:m.en,a:m.a,choices:shuffle([m.a,m.yours].filter(Boolean)),note:m.note};});
+  const prev=state.count;state.count="all";startGame(shuffle(missQ));state.count=prev;
 };
-function backHome(){
-  $("game").classList.add("hidden");$("results").classList.add("hidden");
-  $("home").classList.remove("hidden");renderHome();window.scrollTo(0,0);
-}
+function backHome(){$("game").classList.add("hidden");$("results").classList.add("hidden");$("home").classList.remove("hidden");refreshHome();window.scrollTo(0,0);}
 $("gearBtn").onclick=()=>{renderSettings();$("overlay").classList.add("show");};
 $("closeSheet").onclick=()=>$("overlay").classList.remove("show");
 $("overlay").onclick=e=>{if(e.target===$("overlay"))$("overlay").classList.remove("show");};
 
-// re-render current question when furigana toggled mid-question (only if not yet answered)
-renderQuestion.refresh=function(){
-  if(!$("game").classList.contains("hidden") && !state.answered){
-    renderQuestion();
-  }
-};
-
-// keyboard shortcuts (desktop): 1-4 pick, Enter = next/flip
 document.addEventListener("keydown",e=>{
-  if($("game").classList.contains("hidden"))return;
-  const item=state.queue[state.idx];if(!item)return;
-  if(item.kind==="flash"){
-    const fe=$("flashEl");
+  if($("game").classList.contains("hidden"))return;const item=state.queue[state.idx];if(!item)return;
+  if(item.kind==="flash"){const fe=$("flashEl");
     if((e.key==="Enter"||e.key===" ")&&fe&&!fe.classList.contains("flipped")){fe.click();e.preventDefault();}
-    else if(e.key==="1"||e.key.toLowerCase()==="x"){const b=$("missBtn");if(b&&$("flashActions").style.visibility==="visible")b.click();}
-    else if(e.key==="2"||e.key.toLowerCase()==="c"){const b=$("gotBtn");if(b&&$("flashActions").style.visibility==="visible")b.click();}
-    return;
-  }
-  if(!state.answered){
-    const n=parseInt(e.key);
-    if(n>=1&&n<=item.choices.length){[...document.querySelectorAll("#choiceArea .choice")][n-1].click();}
-  }else if(e.key==="Enter"){const nb=$("nextBtn");if(nb)nb.click();}
+    else if((e.key==="1"||e.key.toLowerCase()==="x")&&$("flashActions").style.visibility==="visible"){$("missBtn").click();}
+    else if((e.key==="2"||e.key.toLowerCase()==="c")&&$("flashActions").style.visibility==="visible"){$("gotBtn").click();}
+    return;}
+  if(!state.answered){const n=parseInt(e.key);if(n>=1&&n<=item.choices.length)[...document.querySelectorAll("#choiceArea .choice")][n-1].click();}
+  else if(e.key==="Enter"){const nb=$("nextBtn");if(nb)nb.click();}
 });
 
-renderHome();
+/* sentence x-ray tooltip */
+const tip=$("tip");tip.style.pointerEvents="none";
+function tipHTML(d){
+  let h=`<div class="hw">${d.w}${d.r?`<small>${d.r}</small>`:""}</div>`;
+  if(d.p){h+=`<span class="row2"><span class="pt">Particle</span> — ${d.p}</span>`;}
+  else{
+    if(d.d&&d.d!==d.w)h+=`<span class="row2"><span class="tag2">Dictionary form:</span> ${d.d}</span>`;
+    if(d.c)h+=`<span class="row2"><span class="tag2">Form:</span> ${d.c}</span>`;
+    if(d.m)h+=`<span class="row2"><span class="tag2">Meaning:</span> ${d.m}</span>`;
+  }
+  return h;
+}
+function showTip(el){
+  tip.innerHTML=tipHTML(el.dataset);tip.classList.add("show");
+  const r=el.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight;
+  let left=r.left+r.width/2-tw/2;left=Math.max(8,Math.min(left,innerWidth-tw-8));
+  let top=r.top-th-10;if(top<8)top=r.bottom+10;
+  tip.style.left=left+"px";tip.style.top=top+"px";
+}
+function hideTip(){tip.classList.remove("show");document.querySelectorAll(".gloss.active").forEach(g=>g.classList.remove("active"));}
+document.addEventListener("mouseover",e=>{const g=e.target.closest&&e.target.closest(".gloss");if(g)showTip(g);});
+document.addEventListener("mouseout",e=>{const g=e.target.closest&&e.target.closest(".gloss");
+  if(g&&!(e.relatedTarget&&g.contains(e.relatedTarget)))hideTip();});
+document.addEventListener("click",e=>{const g=e.target.closest&&e.target.closest(".gloss");
+  if(g){e.stopPropagation();if(g.classList.contains("active"))hideTip();else{hideTip();g.classList.add("active");showTip(g);}}
+  else hideTip();});
+window.addEventListener("scroll",hideTip,true);
+
+refreshHome();
 </script>
 </body>
 </html>
